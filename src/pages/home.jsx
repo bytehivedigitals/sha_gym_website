@@ -10,6 +10,7 @@ import Services from "../components/Services/Services";
 const Home = () => {
     return (
         <div className="home-container bg-amber-50" style={{width: "100vw", backgroundColor: "black"}}>
+
             <Navbar/>
             <Landing />
             {/* <About />
