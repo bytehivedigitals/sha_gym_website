@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import hitman from '../../assets/dd.webp';
-import clock from '../../assets/warthw.webp';
-import poss from '../../assets/walsk.webp';
-import fire from '../../assets/thee.webp';
-import dumpel from '../../assets/db.webp';
-import image1 from '../../assets/img1.webp';
-import image2 from '../../assets/img2.webp';
-import image3 from '../../assets/img3.webp';
+import hitman from "../../assets/dd.webp";
+import clock from "../../assets/warthw.webp";
+import poss from "../../assets/walsk.webp";
+import fire from "../../assets/thee.webp";
+import dumpel from "../../assets/db.webp";
+import image1 from "../../assets/img1.webp";
+import image2 from "../../assets/img2.webp";
+import image3 from "../../assets/img3.webp";
 
 const Landing = () => {
   const [count, setCount] = useState(0);
@@ -98,20 +98,35 @@ const Landing = () => {
         {/* Images in Round Divs */}
         <div className="flex items-center gap-4 justify-center mb-4">
           <div className="w-[5.85rem] h-[5.85rem] bg-gray-600 rounded-full overflow-hidden">
-            <img src={image1} alt="Image 1" className="w-full h-full object-cover" />
+            <img
+              src={image1}
+              alt="Image 1"
+              className="w-full h-full object-cover"
+            />
           </div>
           <div className="w-[5.85rem] h-[5.85rem] ml-[-2.500rem] bg-gray-600 rounded-full overflow-hidden">
-            <img src={image2} alt="Image 2" className="w-full h-full object-cover" />
+            <img
+              src={image2}
+              alt="Image 2"
+              className="w-full h-full object-cover"
+            />
           </div>
           <div className="w-[5.85rem] h-[5.85rem] ml-[-2.500rem] bg-gray-600 rounded-full overflow-hidden">
-            <img src={image3} alt="Image 3" className="w-full h-full object-cover" />
+            <img
+              src={image3}
+              alt="Image 3"
+              className="w-full h-full object-cover"
+            />
           </div>
         </div>
 
         {/* Number Transition */}
         <div className="text-[1.5rem] md:text-[2rem] font-bold mb-4">
           {count.toLocaleString()}+
-          <span className="text-[1rem] md:text-[1.5rem] text-gray-400"> Happy spirits</span>
+          <span className="text-[1rem] md:text-[1.5rem] text-gray-400">
+            {" "}
+            Happy spirits
+          </span>
         </div>
       </div>
 
@@ -119,18 +134,6 @@ const Landing = () => {
         <button className="bg-white text-black text-[1rem] md:text-[1.5rem] font-bold px-6 md:px-8 py-3 md:py-4 rounded-full shadow-md hover:bg-gray-200 transition cursor-pointer">
           Let's Start &gt;&gt;&gt;
         </button>
-      </div>
-
-      <div className="absolute bottom-6 text-center z-20">
-        {/* Footer Text */}
-        <div className="mt-4">
-          <p className="text-[2rem] md:text-[3rem] lg:text-[5rem] w-full md:w-[70rem] font-bold leading-tight">
-            Inspired to <br /> Inspire Your Best Self
-          </p>
-          <p className="text-[0.8rem] md:text-[1rem] text-gray-400 mt-[1rem] md:mt-[1rem]">
-            We're Your Partner In Achieving A Healthier, Stronger, And More Confident You.
-          </p>
-        </div>
       </div>
     </div>
   );
