@@ -1,6 +1,6 @@
 import React from "react";
-import { FaLinkedin, FaFacebook } from "react-icons/fa"; // ✅ from Font Awesome
-import { FaInstagram } from "react-icons/fa";
+import { FaLinkedin, FaFacebook, FaInstagram } from "react-icons/fa";
+import { MdPhone, MdEmail, MdLocationOn } from "react-icons/md";
 import ShaLogo from "../../assets/sha.webp";
 
 export default function Footer() {
@@ -10,9 +10,15 @@ export default function Footer() {
         {/* Contact Section */}
         <div className="space-y-2">
           <h2 className="font-semibold">Contact</h2>
-          <p>35622781288</p>
-          <p>@shaagymm</p>
-          <p>kozhikode, eranojipalam</p>
+          <p className="flex items-center gap-2">
+            <MdPhone className="text-xl" /> 35622781288
+          </p>
+          <p className="flex items-center gap-2">
+            <MdEmail className="text-xl" /> @shaagymm
+          </p>
+          <p className="flex items-center gap-2">
+            <MdLocationOn className="text-xl" /> kozhikode, eranojipalam
+          </p>
         </div>
 
         {/* Social Section */}
