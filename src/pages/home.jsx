@@ -8,18 +8,20 @@ import About from "../components/About/About";
 import Services from "../components/Services/Services";
 
 const Home = () => {
-    return (
-        <div className="home-container bg-amber-50" style={{width: "100vw", backgroundColor: "black"}}>
-
-            <Navbar/>
-            <Landing />
-            {/* <About />
+  return (
+    <div
+      className="home-container bg-amber-50"
+      style={{ width: "100vw", backgroundColor: "black" }}
+    >
+      <Navbar />
+      <Landing />
+      {/* <About />
             <Features />
             <Services />
-            <Contact />
-            <Footer /> */}
-        </div>
-    );
+            <Contact /> */}
+      <Footer />
+    </div>
+  );
 };
 
 export default Home;
