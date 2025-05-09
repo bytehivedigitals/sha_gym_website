@@ -1,12 +1,19 @@
-import React, { useEffect, useRef } from "react";
-import loaderVideo from "../../assets/sha_loader.webm"; // Place your video here
+import React, { useEffect, useRef, useState } from "react";
+import loaderVideoDesktop from "../../assets/sha_loader.webm";
+import loaderVideoMobile from "../../assets/loader_mobile.webm";
 
 export default function Loader({ onLoaded }) {
   const videoRef = useRef(null);
+  const [videoSrc, setVideoSrc] = useState(loaderVideoDesktop);
+  const [objectFitClass, setObjectFitClass] = useState("object-contain");
 
   useEffect(() => {
+    const isMobile = window.innerWidth < 768;
+    setVideoSrc(isMobile ? loaderVideoMobile : loaderVideoDesktop);
+    setObjectFitClass(isMobile ? "object-cover" : "object-contain");
+
     const handleVideoEnd = () => {
-      onLoaded(); // Only proceed after video ends
+      onLoaded();
     };
 
     const videoElement = videoRef.current;
@@ -25,12 +32,12 @@ export default function Loader({ onLoaded }) {
     <div className="fixed inset-0 z-50 bg-black flex items-center justify-center">
       <video
         ref={videoRef}
-        className="w-full h-full object-contain"
+        className={`w-full h-full ${objectFitClass}`}
         autoPlay
         muted
         playsInline
       >
-        <source src={loaderVideo} type="video/mp4" />
+        <source src={videoSrc} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
     </div>
