@@ -1,7 +1,7 @@
 import React from "react";
-import { CiLinkedin, CiFacebook } from "react-icons/ci";
+import { FaLinkedin, FaFacebook } from "react-icons/fa"; // ✅ from Font Awesome
 import { FaInstagram } from "react-icons/fa";
-import ShaLogo from "../../assets/sha.webp"; // Adjust the path as needed
+import ShaLogo from "../../assets/sha.webp";
 
 export default function Footer() {
   return (
@@ -19,16 +19,14 @@ export default function Footer() {
         <div className="flex flex-col items-center gap-4">
           <h2 className="font-semibold">Follow Us On</h2>
           <div className="flex gap-6 text-4xl">
-            {" "}
-            {/* Increased icon size */}
             <a href="#" aria-label="LinkedIn">
-              <CiLinkedin />
+              <FaLinkedin />
             </a>
             <a href="#" aria-label="Instagram">
               <FaInstagram />
             </a>
             <a href="#" aria-label="Facebook">
-              <CiFacebook />
+              <FaFacebook />
             </a>
           </div>
         </div>
