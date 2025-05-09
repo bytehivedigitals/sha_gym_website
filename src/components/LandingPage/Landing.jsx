@@ -81,7 +81,7 @@ const Landing = () => {
           </div>
 
           {/* 4th Stat */}
-          <div className="bg-gray-700 p-4 rounded-lg w-[5.5rem] h-[6.563rem] !rounded-[2rem] ml-[2rem] md:ml-[15rem] mt-[12rem] md:mt-[13rem]">
+          <div className="bg-gray-700 p-4 rounded-lg w-[5.5rem] h-[6.563rem] !rounded-[2rem] ml-[2rem] md:ml-[10rem] mt-[12rem] md:mt-[13rem]">
             <img
               src={dumpel}
               alt="Dumbbell Icon"
