@@ -14,7 +14,7 @@ const Landing = () => {
   useEffect(() => {
     let start = 0;
     const end = 12000; // Target count for 12k
-    const duration = 2000; // Animation duration (2 seconds)
+    const duration = 2500; // Animation duration (2 seconds)
     const increment = Math.ceil(end / (duration / 10));
 
     const counter = setInterval(() => {
