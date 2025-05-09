@@ -25,11 +25,7 @@ export default function Loader({ onLoaded }) {
     <div className="fixed inset-0 z-50 bg-black flex items-center justify-center">
       <video
         ref={videoRef}
-<<<<<<< HEAD
         className="w-full h-full object-contain"
-=======
-        className="w-full h-full object-cover"
->>>>>>> 59d60da (resoveld conflicts)
         autoPlay
         muted
         playsInline
