@@ -94,7 +94,7 @@ const Landing = () => {
       </div>
 
       {/* Footer Section */}
-      <div className="absolute bottom-8 text-center z-20 ml-[-90rem] mb-[8rem]">
+      <div className="absolute bottom-8 text-center z-20 ml-[-90rem] mb-[11rem]">
         {/* Images in Round Divs */}
         <div className="flex items-center gap-4 justify-center mb-4">
           <div className="w-[5.85rem] h-[5.85rem] bg-gray-600 rounded-full overflow-hidden">
@@ -123,7 +123,7 @@ const Landing = () => {
         {/* Number Transition */}
         <div className="text-[1.5rem] md:text-[2rem] font-bold mb-4">
           {count.toLocaleString()}+
-          <span className="text-[1rem] md:text-[1.5rem] text-gray-400">
+          <span className="text-[1rem] md:text-[1.5rem] text-gray-400 ">
             {" "}
             Happy spirits
           </span>
