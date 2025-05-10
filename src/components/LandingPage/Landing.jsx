@@ -130,8 +130,8 @@ const Landing = () => {
         </div>
       </div>
 
-      <div className="absolute right-4 md:right-10 bottom-[8rem] md:bottom-[16rem] z-50">
-        <button className="bg-white text-black text-[1rem] md:text-[1.5rem] font-bold px-6 md:px-8 py-3 md:py-4 rounded-full shadow-md hover:bg-gray-200 transition cursor-pointer">
+      <div className="absolute right-4 md:right-10 bottom-[8rem] md:bottom-[17rem] z-50">
+        <button className="bg-white mr-[5rem]  text-black text-[1rem] md:text-[1.5rem] font-bold px-6 md:px-8 py-3 md:py-4 rounded-full shadow-md hover:bg-gray-200 transition cursor-pointer">
           Let's Start &gt;&gt;&gt;
         </button>
       </div>
