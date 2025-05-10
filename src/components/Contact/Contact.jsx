@@ -15,7 +15,7 @@ const Contact = () => {
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-black">
-      <div className="bg-white shadow-lg rounded-[3rem] p-[10%] w-full max-w-[90%] text-center border border-gray-300">
+      <div className="bg-white shadow-lg rounded-[3rem] p-[3%] w-full max-w-[90%] text-center border border-gray-300 mt-[10rem]">
         {/* Heading */}
         <p className="text-[5rem] font-bold text-gray-900 mb-6">
           Connect Engage Transform
