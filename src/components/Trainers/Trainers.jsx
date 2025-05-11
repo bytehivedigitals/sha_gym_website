@@ -28,7 +28,7 @@ const Trainers = () => {
             <img
               src={bgImage}
               alt="decorative"
-              className="absolute bottom-6 w-120 h-120 object-contain opacity-40 pointer-events-none z-0"
+              className="absolute bottom-6 w-110 h-110 object-contain opacity-40 pointer-events-none z-0"
             />
 
             {/* Trainer image */}
