@@ -1,6 +1,6 @@
 import React from "react";
 import "./Features.css";
-import feauteimg from "../../assets/muscle-man.webp";
+import feauteimg from "../../assets/man-doing-sport-removebg-preview (1).png";
 import nutri from "../../assets/warthw.webp";
 import premium from "../../assets/thee.webp";
 import expert from "../../assets/db.webp";
@@ -57,7 +57,7 @@ const Features = () => {
             <img
               src={feauteimg}
               alt="features-image"
-              className="w-[70%] sm:w-full h-auto object-cover rounded-xl z-10"
+              className="w-[70%] sm:w-full h-auto object-contain rounded-xl z-10"
             />
           </div>
         </div>

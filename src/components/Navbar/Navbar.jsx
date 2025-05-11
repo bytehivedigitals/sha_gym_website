@@ -1,74 +1,107 @@
 import React, { useState, useEffect, useRef } from "react";
-import logo from "../../assets/sha.webp";
+import { FiMenu, FiX } from "react-icons/fi";
+import logo from "../../assets/sha (1).webp";
+
+const navItems = ["Home", "About", "Features", "Services"];
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const menuRef = useRef(null); // Ref to detect clicks outside the menu
+  const [activeItem, setActiveItem] = useState("Home");
+  const menuRef = useRef();
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+  const toggleMenu = () => setIsMenuOpen((prev) => !prev);
 
-  // Function to close the menu if clicked outside
-  const handleClickOutside = (event) => {
-    if (menuRef.current && !menuRef.current.contains(event.target)) {
+  const handleClickOutside = (e) => {
+    if (menuRef.current && !menuRef.current.contains(e.target)) {
       setIsMenuOpen(false);
     }
   };
 
-  // Add event listener to detect clicks outside the menu
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  return (
-    <nav className="bg-black text-white px-4 sm:px-6 lg:px-10 py-[-2rem] h-[12rem]  flex flex-wrap justify-between items-center relative">
-      {/* Logo Section */}
-      <div className="flex items-center gap-2 mt-[-3rem]">
-        <img
-          src={logo}
-          alt="Logo"
-          className="object-contain w-[8rem] sm:w-[10rem] lg:w-[15.313rem] h-[16rem]"
-        />
-      </div>
+  const handleNavClick = (item) => {
+    setActiveItem(item);
+    setIsMenuOpen(false);
+  };
 
-      {/* Hamburger Menu for Small Screens */}
-      <button
-        className="text-gray-400 hover:text-white md:hidden text-[5rem] w-[5rem] h-[5rem] flex items-center justify-center"
-        onClick={toggleMenu}
-      >
-        ☰
+  return (
+    <nav className="bg-black text-white px-6 py-6 flex items-center justify-between sticky top-0 z-50">
+      {/* Logo */}
+      <img
+        src={logo}
+        alt="SHA Logo"
+        className="w-[9rem] h-auto object-contain"
+      />
+
+      {/* Desktop Nav Links */}
+      <ul className="hidden md:flex gap-10 font-semibold text-lg uppercase">
+        {navItems.map((item) => (
+          <li
+            key={item}
+            className={`cursor-pointer transition-opacity duration-300 ${
+              activeItem === item
+                ? "text-white"
+                : "text-white opacity-50 hover:opacity-100"
+            }`}
+            onClick={() => handleNavClick(item)}
+          >
+            {item}
+          </li>
+        ))}
+      </ul>
+
+      {/* Contact Us Button */}
+      <button className="hidden md:block bg-white text-black font-bold text-sm px-5 py-1.5 rounded-full">
+        Contact Us
       </button>
 
-      {/* Navigation Links and Contact Button */}
+      {/* Hamburger Icon */}
+      <button className="md:hidden text-white text-3xl" onClick={toggleMenu}>
+        <FiMenu />
+      </button>
+
+      {/* Overlay */}
+      {isMenuOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-70 z-40 transition-opacity duration-300"></div>
+      )}
+
+      {/* Mobile Drawer */}
       <div
-        ref={menuRef} // Attach ref to the menu container
-        className={`absolute md:static top-[4rem] left-0 w-full md:w-auto bg-black md:bg-transparent md:flex md:items-center md:justify-center md:space-x-10 transition-all duration-300 ${
-          isMenuOpen ? "block" : "hidden"
+        ref={menuRef}
+        className={`fixed top-0 left-0 h-full w-[75%] sm:w-[60%] bg-black z-50 p-6 transform transition-transform duration-300 ${
+          isMenuOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
-        <ul className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-10 text-white font-bold text-[1rem] sm:text-[1rem] lg:text-[1.300rem]">
-          <li className="text-gray-400 hover:text-white cursor-pointer">
-            HOME
-          </li>
-          <li className="text-gray-400 hover:text-white cursor-pointer">
-            ABOUT
-          </li>
-          <li className="text-gray-400 hover:text-white cursor-pointer">
-            FEATURES
-          </li>
-          <li className="text-gray-400 hover:text-white cursor-pointer">
-            SERVICES
+        <div className="flex justify-between items-center mb-6">
+          <img src={logo} alt="SHA Logo" className="w-[8rem] h-auto" />
+          <button onClick={toggleMenu} className="text-white text-3xl">
+            <FiX />
+          </button>
+        </div>
+
+        <ul className="flex flex-col gap-6 font-bold text-white uppercase text-lg">
+          {navItems.map((item) => (
+            <li
+              key={item}
+              onClick={() => handleNavClick(item)}
+              className={`cursor-pointer ${
+                activeItem === item
+                  ? "text-white"
+                  : "text-white opacity-50 hover:opacity-100"
+              }`}
+            >
+              {item}
+            </li>
+          ))}
+          <li>
+            <button className="mt-4 w-full bg-white text-black rounded-full py-2 text-center font-semibold">
+              Contact Us
+            </button>
           </li>
         </ul>
-
-        {/* Contact Button */}
-        <button className="mt-4 md:mt-0 w-full md:w-auto !h-[3rem] !bg-white text-black font-bold !text-[1rem] sm:!text-[1.2rem] lg:!text-[1.3rem] py-2 px-4 !rounded-[2rem] flex items-center justify-center">
-          CONTACT US
-        </button>
       </div>
     </nav>
   );

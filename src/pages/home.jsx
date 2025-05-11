@@ -6,20 +6,26 @@ import Contact from "../components/Contact/Contact";
 import Footer from "../components/Footer/Footer";
 import About from "../components/About/About";
 import Services from "../components/Services/Services";
+import Testimonials from "../components/Testimonials/Testimonials";
+import Trainers from "../components/Trainers/Trainers";
 
 const Home = () => {
-    return (
-        <div className="home-container bg-amber-50" style={{width: "100vw", backgroundColor: "black"}}>
-
-            <Navbar/>
-            <Landing />
-            <About />
-            <Features />
-            <Services />
-            <Contact />
-            <Footer />
-        </div>
-    );
+  return (
+    <div
+      className="home-container bg-amber-50"
+      style={{ width: "100vw", backgroundColor: "black" }}
+    >
+      <Navbar />
+      <Landing />
+      <About />
+      <Features />
+      <Services />
+      <Trainers />
+      <Testimonials />
+      <Contact />
+      <Footer />
+    </div>
+  );
 };
 
 export default Home;
