@@ -40,7 +40,7 @@ const Testimonials = () => {
 
   return (
     <div className="bg-black text-white text-center px-4 py-20">
-      <h1 className="text-3xl md:text-5xl font-extrabold uppercase">
+      <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold uppercase leading-tight">
         Your Fitness <br className="hidden md:block" /> Goals, Their Expertise
       </h1>
       <p className="mt-4 text-sm md:text-base text-gray-400 max-w-xl mx-auto uppercase tracking-wide">

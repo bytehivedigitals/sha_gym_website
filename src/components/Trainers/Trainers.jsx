@@ -13,10 +13,10 @@ const trainers = [
 const Trainers = () => {
   return (
     <div className="text-white mt-20 px-4 max-w-7xl mx-auto">
-      <h2 className="text-center text-3xl md:text-5xl font-bold mb-4">
+      <h2 className="text-center text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
         Your Fitness <br /> Goals, Their Expertise
       </h2>
-      <p className="text-center text-sm md:text-lg mb-8">
+      <p className="text-center text-sm md:text-lg mb-10">
         Our Team Of Certified Trainers Brings Unparalleled Expertise
       </p>
 
@@ -24,7 +24,7 @@ const Trainers = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
         {trainers.map((trainer) => (
           <div key={trainer.id} className="relative flex flex-col items-center">
-            {/* Decorative background shape - increased size */}
+            {/* Decorative background shape */}
             <img
               src={bgImage}
               alt="decorative"
@@ -47,7 +47,7 @@ const Trainers = () => {
       </div>
 
       {/* Central Slide Indicator */}
-      <div className="mt-6 text-center text-2xl font-bold z-10">
+      <div className="mt-8 text-center text-2xl font-bold z-10">
         {Array(3)
           .fill("/")
           .map((slash, i) => (
