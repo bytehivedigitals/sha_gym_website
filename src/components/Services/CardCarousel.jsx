@@ -1,11 +1,13 @@
 import React from "react";
 import card from "../../assets/bodybuilder-showing-his-muscles_136403-5542.avif";
-import "./CardCarousel.css"; // <-- we'll create this CSS file
+import card1 from "../../assets/plan1.png";
+import card2 from "../../assets/plan2.png";
+import "./CardCarousel.css"; // Custom styling if needed
 
 const cards = [
   { id: 1, title: "Card 1", img: card },
-  { id: 2, title: "Card 2", img: card },
-  { id: 3, title: "Card 3", img: card },
+  { id: 2, title: "Card 2", img: card1 },
+  { id: 3, title: "Card 3", img: card2 },
   { id: 4, title: "Card 4", img: card },
   { id: 5, title: "Card 5", img: card },
 ];
@@ -17,7 +19,7 @@ const CardCarousel = () => {
         {[...cards, ...cards].map((card, index) => (
           <div
             key={index}
-            className="carousel-card w-[300px] md:w-[400px] flex-shrink-0 px-4"
+            className="carousel-card w-[300px] md:w-[400px] flex-shrink-0 px-1"
           >
             <div className="bg-black rounded-lg p-4">
               <img

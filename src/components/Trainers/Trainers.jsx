@@ -16,7 +16,9 @@ const Trainers = () => {
       <h2 className="text-center text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
         Your Fitness <br /> Goals, Their Expertise
       </h2>
-      <p className="text-center text-sm md:text-lg mb-10">
+
+      {/* Low opacity paragraph */}
+      <p className="text-center text-sm md:text-lg mb-10 text-white/60">
         Our Team Of Certified Trainers Brings Unparalleled Expertise
       </p>
 

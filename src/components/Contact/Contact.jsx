@@ -1,16 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const Contact = () => {
-  // State to store the email entered by the user
-  const [email, setEmail] = useState('');
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
 
-  // Handler function for opening the mail client
   const handleMailClick = () => {
-    if (email.trim() === '') {
-      alert('Please enter a valid email address.');
+    if (email.trim() === "" || name.trim() === "" || phone.trim() === "") {
+      alert("Please fill in all fields correctly.");
       return;
     }
-    window.location.href = `mailto:${email}?subject=Join Our Community&body=I would like to join your community!`;
+
+    const subject = encodeURIComponent("Join Our Community");
+    const body = encodeURIComponent(
+      `Name: ${name}\nPhone: ${phone}\nEmail: ${email}\n\nI would like to join your community!`
+    );
+
+    window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
   };
 
   return (
@@ -20,21 +26,39 @@ const Contact = () => {
         <p className="text-[2rem] sm:text-[5rem] font-bold text-gray-900 mb-4 sm:mb-6">
           Connect Engage Transform
         </p>
+
         {/* Subtext */}
         <p className="text-gray-600 text-base sm:text-lg mb-6 sm:mb-10">
-          Join A Vibrant Community For Fuel Motivation, Engagement Drives Progress, And Transformation
+          Join A Vibrant Community For Fuel Motivation, Engagement Drives
+          Progress, And Transformation
         </p>
-        {/* Input and Button */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+
+        {/* Input Fields and Button */}
+        <div className="flex flex-col sm:flex-row sm:flex-wrap items-center justify-between gap-4 mb-6">
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Your Name"
+            className="h-[4rem] sm:h-[5rem] w-full sm:w-[28rem] px-6 py-2 rounded-lg shadow-sm border-gray-300 bg-gray-100 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+          <input
+            type="tel"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+            placeholder="Your Phone Number"
+            className="h-[4rem] sm:h-[5rem] w-full sm:w-[28rem] px-6 py-2 rounded-lg shadow-sm border-gray-300 bg-gray-100 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
           <input
             type="email"
-            value={email} // Bind the input value to the state
-            onChange={(e) => setEmail(e.target.value)} // Update state on input change
-            placeholder="your email"
-            className="h-[4rem] sm:h-[5rem] w-full sm:w-[58rem] px-6 py-2 rounded-lg shadow-sm border-gray-300 bg-gray-100 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Your Email"
+            className="h-[4rem] sm:h-[5rem] w-full sm:w-[28rem] px-6 py-2 rounded-lg shadow-sm border-gray-300 bg-gray-100 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
+          {/* Left-Aligned Button */}
           <button
-            onClick={handleMailClick} // Attach the handler here
+            onClick={handleMailClick}
             className="w-full sm:w-[14rem] h-[4rem] sm:h-[5rem] px-6 py-2 bg-black text-white font-semibold rounded-lg shadow-md hover:bg-gray-800 transition duration-300 cursor-pointer"
           >
             Join Now
