@@ -1,16 +1,23 @@
 .carousel-track {
-  animation: scroll 30s linear infinite;
-  width: fit-content;
+  display: flex;
+  gap: 1.5rem;
+  width: max-content;
+  animation: scroll-left 40s linear infinite;
 }
-@keyframes scroll {
+
+.carousel-wrapper:hover .carousel-track {
+  animation-play-state: paused;
+}
+
+@keyframes scroll-left {
   0% {
-    transform: translateX(0%);
+    transform: translateX(0);
   }
   100% {
     transform: translateX(-50%);
   }
 }
 
-.carousel-track {
-  scroll-behavior: smooth;
+.carousel-card {
+  flex-shrink: 0;
 }
