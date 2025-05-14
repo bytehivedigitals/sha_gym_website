@@ -8,6 +8,7 @@ import About from "../components/About/About";
 import Services from "../components/Services/Services";
 import Testimonials from "../components/Testimonials/Testimonials";
 import Trainers from "../components/Trainers/Trainers";
+import Gallery from "../components/Gallery/Gallery"
 
 const Home = () => {
   return (
@@ -18,6 +19,7 @@ const Home = () => {
       <Navbar />
       <Landing />
       <About />
+      <Gallery />
       <Features />
       <Services />
       <Trainers />
