@@ -8,7 +8,8 @@ import About from "../components/About/About";
 import Services from "../components/Services/Services";
 import Testimonials from "../components/Testimonials/Testimonials";
 import Trainers from "../components/Trainers/Trainers";
-import Gallery from "../components/Gallery/Gallery"
+import Gallery from "../components/Gallery/Gallery";
+import WhatsAppButton from "../components/whatsaappbot/whatsappbot";
 
 const Home = () => {
   return (
@@ -26,6 +27,7 @@ const Home = () => {
       <Testimonials />
       <Contact />
       <Footer />
+      <WhatsAppButton />
     </div>
   );
 };
