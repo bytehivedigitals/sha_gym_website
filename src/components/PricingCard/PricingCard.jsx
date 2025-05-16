@@ -28,13 +28,13 @@ const pricingData = [
   },
 ];
 
-// The most important change is the improved responsive classes and section styles
 const PricingCards = () => (
   <section
     className="
       w-full
-      min-h-[45rem]
+      min-h-[50rem]
       flex
+      flex-col
       justify-center
       items-center
       py-10
@@ -53,7 +53,19 @@ const PricingCards = () => (
   >
     {/* Overlay for better readability on bg image */}
     <div className="absolute inset-0 bg-black/30 rounded-none md:rounded-[2rem] pointer-events-none" />
-    <div className="relative w-full max-w-[1400px] mx-auto px-1 sm:px-4 z-10">
+    
+    {/* TEXT BLOCK */}
+    <div className="relative z-10 w-full text-center mb-10">
+      <h2 className="text-4xl sm:text-5xl md:text-[4rem] font-extrabold uppercase text-white mb-2 leading-tight">
+        INSPIRED TO<br />INSPIRE YOUR BEST SELF
+      </h2>
+      <div className="text-base sm:text-lg md:text-[1rem] font-semibold text-white/90 tracking-wide">
+        INSPIRED TO INSPIRE YOUR BEST SELF INSPIRED TO INSPIRE YOUR BEST SELFINSPIRED TO INSPIRE YOUR BEST SELF
+      </div>
+    </div>
+    
+    {/* PRICING CARDS UNDER THE TEXT */}
+    <div className="relative w-full max-w-[1400px] mx-auto px-1 sm:px-4 z-10 flex justify-center">
       {/* Responsive grid: 1 col on mobile, 2 on sm/md, 4 on lg+ */}
       <div className="
         grid
