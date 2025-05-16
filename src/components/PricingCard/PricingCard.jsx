@@ -28,32 +28,87 @@ const pricingData = [
   },
 ];
 
+// The most important change is the improved responsive classes and section styles
 const PricingCards = () => (
   <section
-    className="w-[89%] h-[45rem] flex justify-center items-center py-20 bg-cover bg-center ml-[6rem] rounded-[2rem]"
-    style={{ backgroundImage: `url(${gym1})` }}
+    className="
+      w-full
+      min-h-[45rem]
+      flex
+      justify-center
+      items-center
+      py-10
+      px-2
+      bg-cover
+      bg-center
+      rounded-none
+      md:rounded-[2rem]
+      relative
+      "
+    style={{
+      backgroundImage: `url(${gym1})`,
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+    }}
   >
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[4rem] w-full max-w-7xl px-4">
-      {pricingData.map((item, idx) => (
-        <div
-          key={idx}
-          className="bg-white/20 backdrop-blur-md rounded-3xl shadow-xl flex flex-col items-center px-8 py-10 text-center border border-white/30"
-          data-aos="zoom-in"
-          data-aos-delay={100 * (idx + 1)}
-        >
-          <div className="text-xl font-bold mb-2">{item.plan}</div>
-          <div className="relative mb-2 h-10 flex items-center justify-center">
-            <span className="text-2xl text-white/60 font-bold line-through absolute left-1/2 -translate-x-1/2">{item.old}</span>
-            {/* Decorative strike-through line */}
-            <svg viewBox="0 0 80 20" className="absolute left-1/2 -translate-x-1/2" width={80} height={20} style={{zIndex:2, pointerEvents: 'none'}}>
-              <line x1="5" y1="15" x2="75" y2="5" stroke="white" strokeWidth="3" strokeDasharray="4 2"/>
-            </svg>
+    {/* Overlay for better readability on bg image */}
+    <div className="absolute inset-0 bg-black/30 rounded-none md:rounded-[2rem] pointer-events-none" />
+    <div className="relative w-full max-w-[1400px] mx-auto px-1 sm:px-4 z-10">
+      {/* Responsive grid: 1 col on mobile, 2 on sm/md, 4 on lg+ */}
+      <div className="
+        grid
+        grid-cols-1
+        sm:grid-cols-2
+        lg:grid-cols-4
+        gap-6
+        md:gap-8
+        w-full
+      ">
+        {pricingData.map((item, idx) => (
+          <div
+            key={idx}
+            className="
+              bg-white/20
+              backdrop-blur-md
+              rounded-2xl
+              shadow-xl
+              flex
+              flex-col
+              items-center
+              px-4
+              py-8
+              sm:px-6
+              sm:py-10
+              text-center
+              border
+              border-white/30
+              min-w-0
+            "
+            data-aos="zoom-in"
+            data-aos-delay={100 * (idx + 1)}
+          >
+            <div className="text-lg sm:text-xl font-bold mb-2 text-white">{item.plan}</div>
+            <div className="relative mb-2 h-8 flex items-center justify-center w-full">
+              <span className="text-base sm:text-2xl text-white/60 font-bold line-through absolute left-1/2 -translate-x-1/2">{item.old}</span>
+              {/* Decorative strike-through line */}
+              <svg
+                viewBox="0 0 80 20"
+                className="absolute left-1/2 -translate-x-1/2"
+                width={60}
+                height={16}
+                style={{ zIndex: 2, pointerEvents: "none" }}
+              >
+                <line x1="5" y1="15" x2="55" y2="5" stroke="white" strokeWidth="3" strokeDasharray="4 2" />
+              </svg>
+            </div>
+            <div className="text-3xl sm:text-5xl font-extrabold mb-4 text-white">{item.price}</div>
+            <div className="text-xs sm:text-sm text-white/90 mb-8">{item.desc}</div>
+            <button className="bg-white text-black font-semibold rounded-lg px-5 py-2 shadow hover:bg-gray-400 transition cursor-pointer w-full sm:w-auto">
+              JOIN NOW
+            </button>
           </div>
-          <div className="text-5xl font-extrabold mb-4">{item.price}</div>
-          <div className="text-sm text-white/80 mb-8">{item.desc}</div>
-          <button className="bg-white text-black font-semibold rounded-lg px-6 py-2 shadow hover:bg-gray-400 transition cursor-pointer">JOIN NOW</button>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   </section>
 );
