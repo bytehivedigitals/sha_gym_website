@@ -1,4 +1,5 @@
 import React from "react";
+
 import Navbar from "../components/Navbar/Navbar";
 import Landing from "../components/LandingPage/Landing";
 import Features from "../components/Features/Features";
@@ -11,6 +12,7 @@ import Trainers from "../components/Trainers/Trainers";
 import Gallery from "../components/Gallery/Gallery";
 import WhatsAppButton from "../components/whatsaappbot/whatsappbot";
 import PricingCards from "../components/PricingCard/PricingCard";
+import PersonalTrainingPackages from "../components/PersonalTraining/personalTraining";
 
 const Home = () => {
   return (
@@ -24,6 +26,7 @@ const Home = () => {
       <Gallery />
       <Features />
       <PricingCards />
+      <PersonalTrainingPackages />
       <Trainers />
       <Testimonials />
       <Contact />
