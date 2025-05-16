@@ -1,7 +1,7 @@
 import React from "react";
-import trainer1 from "../../assets/trianer.png";
-import trainer2 from "../../assets/trianer.png";
-import trainer3 from "../../assets/trianer.png";
+import trainer1 from "../../assets/trainer.webp";
+import trainer2 from "../../assets/trainer2.webp";
+import trainer3 from "../../assets/trainer3.webp";
 import bgImage from "../../assets/Shape 1.png"; // Decorative shape
 
 const trainers = [
