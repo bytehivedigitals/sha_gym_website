@@ -16,7 +16,7 @@ const Home = () => {
   return (
     <div
       className="home-container bg-amber-50"
-      style={{ width: "100vw", backgroundColor: "black" }}
+      style={{ width: "100%", backgroundColor: "black" }}
     >
       <Navbar />
       <Landing />
@@ -24,7 +24,6 @@ const Home = () => {
       <Gallery />
       <Features />
       <PricingCards />
-      <Services />
       <Trainers />
       <Testimonials />
       <Contact />

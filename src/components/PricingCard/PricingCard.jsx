@@ -40,6 +40,7 @@ const PricingCards = () => (
       py-10
       px-2
       relative
+      mt-8
       "
   >
     {/* BG IMAGE with 87% width */}
