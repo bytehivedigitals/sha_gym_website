@@ -2,7 +2,7 @@ import React from "react";
 import Navbar from "../components/Navbar/Navbar";
 import Landing from "../components/LandingPage/Landing";
 import Features from "../components/Features/Features";
-import Contact from "../components/Contact/Contact";
+import Contact from "../components/Contact/Contact2";
 import Footer from "../components/Footer/Footer";
 import About from "../components/About/About";
 import Services from "../components/Services/Services";
