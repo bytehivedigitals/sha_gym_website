@@ -1,6 +1,6 @@
 import {useEffect} from "react";
 import "./Features.css";
-import feauteimg from "../../assets/man-doing-sport-removebg-preview (1).png";
+import feauteimg from "../../assets/feature-bg.webp";
 import nutri from "../../assets/warthw.webp";
 import premium from "../../assets/thee.webp";
 import expert from "../../assets/db.webp";
@@ -67,11 +67,11 @@ const Features = () => {
           </div>
 
           {/* Feature Image */}
-          <div className="w-full lg:w-[30%] flex justify-center" data-aos="fade-left" data-aos-delay="400">
+          <div className="w-full lg:w-[30%] flex" data-aos="fade-left" data-aos-delay="400">
             <img
               src={feauteimg}
               alt="features-image"
-              className="w-[70%] sm:w-full h-auto object-contain rounded-xl z-10"
+              className="w-full h-auto object-contain rounded-xl z-10"
             />
           </div>
         </div>
