@@ -33,18 +33,18 @@ const Navbar = () => {
       <img
         src={logo}
         alt="SHA Logo"
-        className="w-[9rem] h-auto object-contain"
-      />
+        className="w-[9rem] ml-8 h-auto object-contain 
+                    hover:filter hover:saturate-100 hover:hue-rotate-0 hover:invert-[.30] hover:sepia-[.90] hover:drop-shadow-[0_0_10px_#f5deb3] transition-all duration-300" />
 
       {/* Desktop Nav Links */}
-      <ul className="hidden md:flex gap-10 font-semibold text-lg uppercase">
+      <ul className="hidden md:flex gap-14 font-semibold text-sm uppercase">
         {navItems.map((item) => (
           <li
             key={item}
             className={`cursor-pointer transition-opacity duration-300 ${
               activeItem === item
                 ? "text-white"
-                : "text-white opacity-50 hover:opacity-100"
+                : "text-white opacity-50 hover:opacity-100 hover:text-yellow-400 hover:scale-120"
             }`}
             onClick={() => handleNavClick(item)}
           >
@@ -54,8 +54,9 @@ const Navbar = () => {
       </ul>
 
       {/* Contact Us Button */}
-      <button className="hidden md:block bg-white text-black font-bold text-sm px-5 py-1.5 rounded-full">
-        Contact Us
+      <button className="hidden md:block bg-white text-black font-bold text-xl mr-6 px-5 py-1.5 rounded-full
+      hover:bg-transparent hover:text-[#f5deb3] hover:border-2 hover:border-[#f5deb3] hover:shadow-[0_0_10px_#f5deb3]  transition-all duration-300 ">
+        CONTACT US
       </button>
 
       {/* Hamburger Icon */}

@@ -28,9 +28,9 @@ const Landing = () => {
   }, []);
 
   return (
-    <div className="relative bg-black text-white min-h-screen flex items-center justify-center overflow-hidden">
+    <div className="relative bg-black text-white min-h-screen flex justify-center overflow-hidden">
       {/* Text in the background */}
-      <div className="absolute inset-0 z-0 flex items-center justify-center text-center px-4 mt-[-50rem]">
+      <div className="absolute inset-0 z-0 flex justify-center text-center px-4 mt-6">
         <h1 className="!text-[4rem] md:!text-[5rem] lg:!text-[6rem] font-extrabold tracking-wide">
           SCULPT <span className="text-gray-400">YOUR</span> BODY, <br />
           ELEVATE <span className="text-gray-400">YOUR</span> SPIRIT
