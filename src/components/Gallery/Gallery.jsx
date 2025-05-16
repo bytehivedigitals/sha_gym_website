@@ -83,7 +83,7 @@ const Gallery = () => {
               }`}
             />
             <p 
-              className={`w-full md:w-1/2 text-[2rem] leading-relaxed transition-all duration-1000 ease-in-out ${
+              className={`w-full md:w-1/2 text-[1.300rem] leading-relaxed transition-all duration-1000 ease-in-out ${
                 visibleItems > index 
                   ? 'translate-x-0 opacity-100' 
                   : item.reverse ? 'translate-x-10 opacity-0' : '-translate-x-10 opacity-0'

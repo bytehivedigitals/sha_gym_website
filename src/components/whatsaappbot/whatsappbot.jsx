@@ -4,15 +4,16 @@ import { FaWhatsapp } from "react-icons/fa"; // WhatsApp icon
 const WhatsAppButton = () => {
   const buttonRef = useRef(null);
 
-  // Notification animation effect: bounce & pulse
+  // Notification animation effect: bounce only (not pulse for numbers)
   useEffect(() => {
     const btn = buttonRef.current;
     if (btn) {
       btn.classList.add("wa-bounce-pulse");
-      // Remove animation after a while if you want it to be a one-time effect
-      // setTimeout(() => btn.classList.remove("wa-bounce-pulse"), 3000);
     }
   }, []);
+
+  // You can make this dynamic (state/prop) if needed
+  const notificationCount = 1;
 
   return (
     <>
@@ -26,7 +27,7 @@ const WhatsAppButton = () => {
           ref={buttonRef}
           className="wa-btn"
           style={{
-            backgroundColor: "#25D366",
+            backgroundColor: "#fff",
             color: "black",
             width: "60px",
             height: "60px",
@@ -45,9 +46,9 @@ const WhatsAppButton = () => {
             outline: "none",
           }}
         >
-          <FaWhatsapp size={32} color="white" />
-          {/* Notification dot */}
-          <span className="wa-notification-dot"></span>
+          <FaWhatsapp size={32} color="black" />
+          {/* Notification badge with number */}
+          <span className="wa-notification-badge">{notificationCount}</span>
         </button>
       </a>
       {/* Styles for notification and animation */}
@@ -59,22 +60,25 @@ const WhatsAppButton = () => {
           .wa-btn:active {
             box-shadow: 0px 2px 6px rgba(0,0,0,0.2);
           }
-          .wa-notification-dot {
+          .wa-notification-badge {
             position: absolute;
-            top: 10px;
-            right: 10px;
-            width: 12px;
-            height: 12px;
+            top: 8px;
+            right: 8px;
+            min-width: 20px;
+            height: 20px;
             background: #ff3b3b;
             border-radius: 50%;
-            border: 2px solid #fff;
+            border: 2px solid #000;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: bold;
             box-shadow: 0 0 10px #ff3b3b88;
-            animation: wa-pulse 1.2s infinite;
-          }
-          @keyframes wa-pulse {
-            0% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.3); opacity: 0.7; }
-            100% { transform: scale(1); opacity: 1; }
+            animation: wa-bounce 1s;
+            pointer-events: none;
+            user-select: none;
           }
           @keyframes wa-bounce {
             0%, 100% { transform: translateY(0); }
