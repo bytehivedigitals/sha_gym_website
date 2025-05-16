@@ -10,6 +10,7 @@ import Testimonials from "../components/Testimonials/Testimonials";
 import Trainers from "../components/Trainers/Trainers";
 import Gallery from "../components/Gallery/Gallery";
 import WhatsAppButton from "../components/whatsaappbot/whatsappbot";
+import PricingCards from "../components/PricingCard/PricingCard";
 
 const Home = () => {
   return (
@@ -22,6 +23,7 @@ const Home = () => {
       <About />
       <Gallery />
       <Features />
+      <PricingCards />
       <Services />
       <Trainers />
       <Testimonials />

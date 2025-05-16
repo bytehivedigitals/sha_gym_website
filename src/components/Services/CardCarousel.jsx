@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import card from "../../assets/bodybuilder-showing-his-muscles_136403-5542.avif";
-import card1 from "../../assets/plan1.png";
-import card2 from "../../assets/plan2.png";
+import card1 from "../../assets/plan1.webp";
+import card2 from "../../assets/plan2.webp";
 import "./CardCarousel.css";
 
 const cards = [
