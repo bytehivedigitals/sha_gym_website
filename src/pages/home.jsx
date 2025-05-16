@@ -19,6 +19,7 @@ const Home = () => {
     <div
       className="home-container bg-amber-50"
       style={{ width: "100%", backgroundColor: "black" }}
+      
     >
       <Navbar />
       <Landing />
