@@ -28,7 +28,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-black text-white px-6 py-6 flex items-center justify-between sticky top-0 z-50">
+    <nav className="navbar-container bg-black text-white px-6 py-6 flex items-center justify-between sticky top-0 z-50">
       {/* Logo */}
       <img
         src={logo}

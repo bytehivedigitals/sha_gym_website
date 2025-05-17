@@ -12,7 +12,7 @@ const trainers = [
 
 const Trainers = () => {
   return (
-    <div className="text-white mt-20 px-4 max-w-7xl mx-auto">
+    <div className="trainers-container text-white mt-20 px-4 max-w-7xl mx-auto">
       <h2 className="text-center text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
         Your Fitness <br /> Goals, Their Expertise
       </h2>

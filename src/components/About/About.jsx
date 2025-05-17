@@ -4,7 +4,7 @@ import gymVideo from "../../assets/sha_loader.webm"; // Ensure the path is corre
 
 const AboutSection = () => {
   return (
-    <div className="bg-black text-white py-20 px-6 md:px-16">
+    <div className="about-container bg-black text-white py-20 px-6 md:px-16">
       <div className="flex flex-col lg:flex-row items-start lg:items-center gap-16">
         {/* Left Side */}
         <div className="lg:w-1/2 w-full">

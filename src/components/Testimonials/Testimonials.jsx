@@ -40,7 +40,7 @@ const Testimonials = () => {
   const nextNextIndex = (index + 2) % testimonials.length;
 
   return (
-    <div className="bg-black text-white text-center px-2 sm:px-4 py-12 sm:py-20">
+    <div className="testimonial-container bg-black text-white text-center px-2 sm:px-4 py-12 sm:py-20">
       <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold uppercase leading-tight">
         Your Fitness <br className="hidden md:block" /> Goals, Their Expertise
       </h1>

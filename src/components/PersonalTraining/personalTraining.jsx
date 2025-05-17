@@ -29,7 +29,7 @@ const packages = [
 
 export default function PersonalTrainingPackages() {
   return (
-    <div className="min-h-screen bg-[black] flex flex-col items-center px-2 py-30">
+    <div className="personal-trainer-section min-h-screen bg-[black] flex flex-col items-center px-2 py-30">
       <h1 className="text-white text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-extrabold text-center tracking-wide font-['Russo_One',sans-serif]">
         Personal Training <br className="hidden xs:block" /> Packages
       </h1>
