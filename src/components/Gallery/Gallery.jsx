@@ -1,98 +1,71 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import gal1 from '../../assets/gym2.webp';
 import gal2 from '../../assets/gym3.webp';
 import gal3 from '../../assets/gym4.webp';
 
+const galleryItems = [
+  {
+    image: gal1,
+    text: 'Welcome to SHA GYM, your ultimate fitness destination. We are passionate about helping individuals at all fitness levels achieve their health and wellness goals. Whether you\'re looking to build strength, lose weight, or improve your overall fitness, we are here to guide you every step of the way.',
+    reverse: false,
+  },
+  {
+    image: gal2,
+    text: 'Welcome to SHA GYM, your ultimate fitness destination. We are passionate about helping individuals at all fitness levels achieve their health and wellness goals. Whether you\'re looking to build strength, lose weight, or improve your overall fitness, we are here to guide you every step of the way.',
+    reverse: true,
+  },
+  {
+    image: gal3,
+    text: 'Welcome to SHA GYM, your ultimate fitness destination. We are passionate about helping individuals at all fitness levels achieve their health and wellness goals. Whether you\'re looking to build strength, lose weight, or improve your overall fitness, we are here to guide you every step of the way.',
+    reverse: false,
+  },
+  {
+    image: gal2,
+    text: 'Welcome to SHA GYM, your ultimate fitness destination. We are passionate about helping individuals at all fitness levels achieve their health and wellness goals. Whether you\'re looking to build strength, lose weight, or improve your overall fitness, we are here to guide you every step of the way.',
+    reverse: true,
+  },
+];
+
 const Gallery = () => {
-  const [visibleItems, setVisibleItems] = useState(1);
-  const galleryRef = useRef(null);
-
-  const galleryItems = [
-    {
-      image: gal1, 
-      text: 'Welcome to SHA GYM, your ultimate fitness destination. We are passionate about helping individuals at all fitness levels achieve their health and wellness goals. Whether you\'re looking to build strength, lose weight, or improve your overall fitness, we are here to guide you every step of the way.',
-      reverse: false,
-    },
-    {
-      image: gal2, 
-      text: 'Welcome to SHA GYM, your ultimate fitness destination. We are passionate about helping individuals at all fitness levels achieve their health and wellness goals. Whether you\'re looking to build strength, lose weight, or improve your overall fitness, we are here to guide you every step of the way.',
-      reverse: true,
-    },
-    {
-      image: gal3, 
-      text: 'Welcome to SHA GYM, your ultimate fitness destination. We are passionate about helping individuals at all fitness levels achieve their health and wellness goals. Whether you\'re looking to build strength, lose weight, or improve your overall fitness, we are here to guide you every step of the way.',
-      reverse: false,
-    },
-    {
-      image: gal2, 
-      text: 'Welcome to SHA GYM, your ultimate fitness destination. We are passionate about helping individuals at all fitness levels achieve their health and wellness goals. Whether you\'re looking to build strength, lose weight, or improve your overall fitness, we are here to guide you every step of the way.',
-      reverse: true,
-    },
-  ];
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            // Show items one by one with delay
-            galleryItems.forEach((_, index) => {
-              setTimeout(() => {
-                setVisibleItems(prev => Math.max(prev, index + 1));
-              }, index * 300); // 300ms delay between each item
-            });
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    if (galleryRef.current) {
-      observer.observe(galleryRef.current);
-    }
-
-    return () => {
-      if (galleryRef.current) {
-        observer.unobserve(galleryRef.current);
-      }
-    };
-  }, []);
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start start', 'end end'],
+  });
 
   return (
-    <div className="bg-black text-white py-16 px-8" ref={galleryRef}>
-      <h2 className="text-end text-4xl font-bold mb-16 animate-fadeIn">GALLERY</h2>
-      <div className="space-y-16">
-        {galleryItems.map((item, index) => (
-          <div
-            key={index}
-            className={`flex flex-col md:flex-row ${
-              item.reverse ? 'md:flex-row-reverse' : ''
-            } items-center gap-8 transition-all duration-1000 ease-in-out ${
-              visibleItems > index 
-                ? 'opacity-100 translate-y-0' 
-                : 'opacity-0 translate-y-10'
-            }`}
-          >
-            <img
-              src={item.image}
-              alt={`Gallery Item ${index + 1}`}
-              className={`w-full md:w-1/2 rounded-lg transition-all duration-1000 ease-in-out ${
-                visibleItems > index 
-                  ? 'scale-100 opacity-100' 
-                  : 'scale-95 opacity-0'
-              }`}
-            />
-            <p 
-              className={`w-full md:w-1/2 text-[1.300rem] leading-relaxed transition-all duration-1000 ease-in-out ${
-                visibleItems > index 
-                  ? 'translate-x-0 opacity-100' 
-                  : item.reverse ? 'translate-x-10 opacity-0' : '-translate-x-10 opacity-0'
-              }`}
-            >
-              {item.text}
-            </p>
-          </div>
-        ))}
+    <div ref={containerRef} className="gallery-container relative h-[320vh]">
+      <div className="sticky top-0 h-screen bg-black text-white flex items-center justify-center overflow-hidden">
+        <div className="relative w-full h-full">
+          <h2 className="text-end text-8xl font-bold mb-16 animate-fadeIn mr-12">GALLERY</h2>
+          {galleryItems.map((item, index) => {
+            const start = index / galleryItems.length;
+            const end = (index + 1) / galleryItems.length;
+
+            const y = useTransform(scrollYProgress, [start, end], index === 0 ? ['0%', '0%'] : ['80%', '0%']);
+            const opacity = useTransform(scrollYProgress, [start, end - 0.05], index === 0 ? [1, 1] : [0, 1]);
+
+            return (
+              <motion.div
+                key={index}
+                className="absolute left-0 w-full h-full"
+                style={{ y, opacity }}
+              >
+                <div className={`flex flex-col md:flex-row items-center justify-center ${item.reverse ? 'md:flex-row-reverse' : ''}`}>
+                  <img
+                    src={item.image}
+                    alt={`Gallery ${index}`}
+                    className="w-1/2 h-[90vh] object-cover shadow-lg"
+                  />
+                  <p className="w-1/2 h-[90vh] text-lg leading-relaxed text-center bg-neutral-900 tagline flex justify-center items-center p-10">
+                    {item.text}
+                  </p>
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );

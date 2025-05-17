@@ -1,12 +1,9 @@
-import React from "react";
-
 import Navbar from "../components/Navbar/Navbar";
 import Landing from "../components/LandingPage/Landing";
 import Features from "../components/Features/Features";
-import Contact from "../components/Contact/Contact2";
+import Contact from "../components/Contact/Contact";
 import Footer from "../components/Footer/Footer";
 import About from "../components/About/About";
-import Services from "../components/Services/Services";
 import Testimonials from "../components/Testimonials/Testimonials";
 import Trainers from "../components/Trainers/Trainers";
 import Gallery from "../components/Gallery/Gallery";
@@ -22,15 +19,24 @@ const Home = () => {
       
     >
       <Navbar />
+      {/* Landing Page */}
       <Landing />
+      {/* About Section */}
       <About />
+      {/* Gallery Section */}
       <Gallery />
+      {/* Features */}
       <Features />
+      {/* Services */}
       <PricingCards />
       <PersonalTrainingPackages />
+      {/* Trainers Section */}
       <Trainers />
+      {/* Testimonials */}
       <Testimonials />
+      {/* Contact */}
       <Contact />
+      {/* Footer Section */}
       <Footer />
       <WhatsAppButton />
     </div>

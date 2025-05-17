@@ -5,7 +5,7 @@ import ShaLogo from "../../assets/sha.webp";
 
 export default function Footer() {
   return (
-    <footer className="bg-black text-white py-6 px-6 md:px-16">
+    <footer className="footer-container bg-black text-white py-6 px-6 md:px-16">
       {/* Desktop Layout */}
       <div className="hidden md:flex justify-between items-start max-w-full">
         {/* Contact Section on far left */}

@@ -31,6 +31,7 @@ const pricingData = [
 const PricingCards = () => (
   <section
     className="
+      price-cards-container
       w-full
       min-h-[50rem]
       flex

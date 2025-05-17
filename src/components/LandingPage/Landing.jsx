@@ -28,7 +28,7 @@ const Landing = () => {
   }, []);
 
   return (
-    <div className="relative bg-black text-white min-h-screen flex justify-center overflow-hidden">
+    <div className="landing-container relative bg-black text-white min-h-screen flex justify-center overflow-hidden">
       {/* Text in the background */}
       <div className="absolute inset-0 z-0 flex justify-center text-center px-4 mt-6">
         <h1 className="!text-[4rem] md:!text-[5rem] lg:!text-[6rem] font-extrabold tracking-wide leading-tight">
@@ -94,7 +94,7 @@ const Landing = () => {
       </div>
 
       {/* Footer Section */}
-      <div className="absolute mt-[50rem] left-10 z-20">
+      <div className="absolute bottom-8 left-10 z-20">
         <div className="flex items-center -space-x-4 mb-2">
           <img src={image1} className="w-16 h-18 rounded-full" />
           <img src={image2} className="w-16 h-18 rounded-full border-2 border-black" />
@@ -111,7 +111,7 @@ const Landing = () => {
         </div>
       </div>
 
-      <div className="absolute right-2 mt-[50rem] z-50">
+      <div className="absolute right-2 bottom-14 z-50">
         <button className="bg-[grey] mr-[5rem]  text-black text-[1rem] md:text-[1.5rem] font-bold px-6 md:px-8 py-3 md:py-4 rounded-full shadow-md hover:bg-gray-200 transition cursor-pointer">
           Let's Start &gt;&gt;&gt;
         </button>
