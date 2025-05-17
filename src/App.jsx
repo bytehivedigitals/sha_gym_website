@@ -9,20 +9,17 @@ function App() {
   const [isVideoEnded, setIsVideoEnded] = useState(false);
 
   return (
-    <>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <div className="relative">
-        {!isVideoEnded && <Loader onLoaded={() => setIsVideoEnded(true)} />}
+    <div className="relative">
+      {!isVideoEnded && <Loader onLoaded={() => setIsVideoEnded(true)} />}
 
-        {isVideoEnded && (
-          <Router>
-            <Routes>
-              <Route path="/" element={<Home />} />
-            </Routes>
-          </Router>
-        )}
-      </div>
-    </>
+      {isVideoEnded && (
+        <Router>
+          <Routes>
+            <Route path="/" element={<Home />} />
+          </Routes>
+        </Router>
+      )}
+    </div>
   );
 }
 

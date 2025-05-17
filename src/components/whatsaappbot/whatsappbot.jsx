@@ -51,14 +51,24 @@ const WhatsAppButton = () => {
           <span className="wa-notification-badge">{notificationCount}</span>
         </button>
       </a>
-      {/* Styles for notification and animation */}
+      {/* Styles for notification, animation, and hover */}
       <style>
         {`
           .wa-btn {
-            transition: box-shadow 0.2s;
+            transition: box-shadow 0.2s, background 0.2s, color 0.2s;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
           }
           .wa-btn:active {
             box-shadow: 0px 2px 6px rgba(0,0,0,0.2);
+          }
+          .wa-btn:hover {
+            background: #25D366 !important;      /* WhatsApp Green */
+            color: #fff !important;
+          }
+          .wa-btn:hover svg {
+            color: #fff !important;
           }
           .wa-notification-badge {
             position: absolute;
