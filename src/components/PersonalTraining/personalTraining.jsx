@@ -1,4 +1,7 @@
 import React from "react";
+import pre1 from "../../assets/gym1.webp";
+import pre2 from "../../assets/pre1.webp";  
+import pre3 from "../../assets/pre2.webp";
 
 const packages = [
   {
@@ -7,7 +10,7 @@ const packages = [
     bg: "bg-gray-500/80",
     overlay: "bg-gray-800/40",
     button: "bg-white text-gray-800",
-    img: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=600&q=80",
+    img: pre3,
   },
   {
     name: "GOLD",
@@ -15,7 +18,7 @@ const packages = [
     bg: "bg-yellow-700/80",
     overlay: "bg-yellow-900/40",
     button: "bg-white text-yellow-700",
-    img: "https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80",
+    img: pre1,
   },
   {
     name: "BRONZE",
@@ -23,7 +26,7 @@ const packages = [
     bg: "bg-orange-900/80",
     overlay: "bg-orange-950/40",
     button: "bg-white text-orange-950",
-    img: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80",
+    img: pre2,
   },
 ];
 

@@ -10,6 +10,7 @@ import Gallery from "../components/Gallery/Gallery";
 import WhatsAppButton from "../components/whatsaappbot/whatsappbot";
 import PricingCards from "../components/PricingCard/PricingCard";
 import PersonalTrainingPackages from "../components/PersonalTraining/personalTraining";
+import Strip from "../components/LandingStrip/strip";
 
 const Home = () => {
   return (
@@ -22,6 +23,7 @@ const Home = () => {
       {/* Landing Page */}
       <Landing />
       {/* About Section */}
+      <Strip />
       <About />
       {/* Gallery Section */}
       <Gallery />

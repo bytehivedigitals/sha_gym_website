@@ -1,8 +1,9 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import gal1 from '../../assets/gym2.webp';
-import gal2 from '../../assets/gym3.webp';
-import gal3 from '../../assets/gym4.webp';
+import gal1 from '../../assets/gym1.webp';
+import gal2 from '../../assets/gym2.webp';
+import gal3 from '../../assets/gym3.webp';
+import gal4 from '../../assets/gym4.webp';
 
 const galleryItems = [
   {
@@ -21,7 +22,7 @@ const galleryItems = [
     reverse: false,
   },
   {
-    image: gal2,
+    image: gal4,
     text: 'Welcome to SHA GYM, your ultimate fitness destination. We are passionate about helping individuals at all fitness levels achieve their health and wellness goals. Whether you\'re looking to build strength, lose weight, or improve your overall fitness, we are here to guide you every step of the way.',
     reverse: true,
   },
@@ -53,11 +54,13 @@ const Gallery = () => {
                 style={{ y, opacity }}
               >
                 <div className={`flex flex-col md:flex-row items-center justify-center ${item.reverse ? 'md:flex-row-reverse' : ''}`}>
-                  <img
-                    src={item.image}
-                    alt={`Gallery ${index}`}
-                    className="w-1/2 h-[90vh] object-cover shadow-lg"
-                  />
+                  <div className="w-1/2 h-[90vh] relative group">
+                    <img
+                      src={item.image}
+                      alt={`Gallery ${index}`}
+                      className="w-full h-full object-cover shadow-lg filter grayscale transition-all duration-500 group-hover:grayscale-0"
+                    />
+                  </div>
                   <p className="w-1/2 h-[90vh] text-lg leading-relaxed text-center bg-neutral-900 tagline flex justify-center items-center p-10">
                     {item.text}
                   </p>
