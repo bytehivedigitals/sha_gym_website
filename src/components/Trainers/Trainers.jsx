@@ -1,5 +1,5 @@
 import React from "react";
-import trainer1 from "../../assets/trainer.webp";
+import trainer1 from "../../assets/trianer.png";
 import trainer2 from "../../assets/trainer2.webp";
 import trainer3 from "../../assets/trainer3.webp";
 import bgImage from "../../assets/Shape 1.png"; // Decorative shape
@@ -33,11 +33,11 @@ const Trainers = () => {
               className="absolute bottom-6 w-110 h-110 object-contain opacity-40 pointer-events-none z-0"
             />
 
-            {/* Trainer image */}
+            {/* Trainer image with grayscale hover effect */}
             <img
               src={trainer.img}
               alt={trainer.name}
-              className="relative z-10 rounded-lg w-full h-[25rem] md:h-[28rem] object-contain"
+              className="relative z-10 rounded-lg w-full h-[25rem] md:h-[28rem] object-contain filter grayscale transition duration-500 hover:grayscale-0"
             />
 
             {/* Trainer Name */}

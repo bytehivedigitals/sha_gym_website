@@ -1,5 +1,5 @@
 import React from "react";
-import gym1 from "../../assets/gym1.webp";
+import gym1 from "../../assets/prcimg.webp";
 
 const pricingData = [
   {
