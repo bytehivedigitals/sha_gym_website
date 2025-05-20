@@ -11,10 +11,12 @@ import WhatsAppButton from "../components/whatsaappbot/whatsappbot";
 import PricingCards from "../components/PricingCard/PricingCard";
 import PersonalTrainingPackages from "../components/PersonalTraining/personalTraining";
 import Strip from "../components/LandingStrip/strip";
+import MapSection from "../components/MapSection/MapSection";
 
 const Home = () => {
   return (
-    <div
+    <div 
+      id="home"
       className="home-container bg-amber-50"
       style={{ width: "100%", backgroundColor: "black" }}
       
@@ -24,21 +26,22 @@ const Home = () => {
       <Landing />
       {/* About Section */}
       <Strip />
-      <About />
+      <About id="about" />
       {/* Gallery Section */}
       <Gallery />
       {/* Features */}
-      <Features />
+      <Features id="features" />
       {/* Services */}
-      <PricingCards />
-      <PersonalTrainingPackages />
+      <PricingCards id="services" />
+      <PersonalTrainingPackages id="personalTrainingPack"/>
       {/* Trainers Section */}
       <Trainers />
       {/* Testimonials */}
       <Testimonials />
       {/* Contact */}
-      <Contact />
+      <Contact id="contact" />
       {/* Footer Section */}
+      <MapSection />
       <Footer />
       <WhatsAppButton />
     </div>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import formbg from "../../assets/form-bg.webp";
 
-const ContactForm = () => {
+const ContactForm = ({id}) => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
@@ -24,6 +24,7 @@ const ContactForm = () => {
 
   return (
     <div
+      id={id}
       className="form-container relative h-screen w-full bg-cover bg-center flex px-5 pt-24"
       style={{
         backgroundImage: `url(${formbg})`,
