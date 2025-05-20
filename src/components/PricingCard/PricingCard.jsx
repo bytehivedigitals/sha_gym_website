@@ -28,8 +28,9 @@ const pricingData = [
   },
 ];
 
-const PricingCards = () => (
+const PricingCards = ({id}) => (
   <section
+    id={id}
     className="
       price-cards-container
       w-full

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
 import logo from "../../assets/sha (1).webp";
 
-const navItems = ["Home", "About", "Features", "Services"];
+const navItems = ["home", "about", "features", "services"];
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -25,10 +25,20 @@ const Navbar = () => {
   const handleNavClick = (item) => {
     setActiveItem(item);
     setIsMenuOpen(false);
+    const section = document.getElementById(item);
+    if (section) {
+      const yOffset = -(document.getElementById("navbar").getBoundingClientRect().height);
+      const y = section.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
+      window.scrollTo({
+        top: y,
+        behavior: "smooth"
+      });
+    }
   };
 
   return (
-    <nav className="navbar-container bg-black text-white px-6 py-6 flex items-center justify-between sticky top-0 z-50">
+    <nav id="navbar" className="navbar-container bg-black text-white px-6 py-6 flex items-center justify-between sticky top-0 z-50">
       {/* Logo */}
       <img
         src={logo}
@@ -55,7 +65,8 @@ const Navbar = () => {
 
       {/* Contact Us Button */}
       <button className="hidden md:block bg-white text-black font-bold text-xl mr-6 px-5 py-1.5 rounded-full
-      hover:bg-transparent hover:text-[#f5deb3] hover:border-2 hover:border-[#f5deb3] hover:shadow-[0_0_10px_#f5deb3]  transition-all duration-300 ">
+      hover:bg-transparent hover:text-[#f5deb3] hover:border-2 hover:border-[#f5deb3] hover:shadow-[0_0_10px_#f5deb3]  transition-all duration-300"
+      onClick={() => handleNavClick("contact")}>
         CONTACT US
       </button>
 

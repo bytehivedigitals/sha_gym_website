@@ -5,11 +5,11 @@ import ShaLogo from "../../assets/sha.webp";
 
 export default function Footer() {
   return (
-    <footer className="footer-container bg-black text-white py-6 px-6 md:px-16">
+    <footer className="footer-container bg-black text-white py-6 px-6 md:px-16 mt-5">
       {/* Desktop Layout */}
       <div className="hidden md:flex justify-between items-start max-w-full">
         {/* Contact Section on far left */}
-        <div className="w-1/3 pl-15 space-y-2 text-left">
+        <div className="w-1/3 pl-2 py-5 space-y-4 text-left">
           <h2 className="font-semibold text-lg">Contact</h2>
           <p className="flex items-center gap-2 text-sm">
             <MdPhone className="text-base" /> +91 79074 67576
@@ -24,9 +24,9 @@ export default function Footer() {
         </div>
 
         {/* Social Icons in the center */}
-        <div className="w-1/3 flex flex-col items-center space-y-2">
+        <div className="w-1/3 flex flex-col py-8 items-center space-y-8">
           <h2 className="font-semibold text-lg">Follow Us On</h2>
-          <div className="flex gap-5 text-2xl">
+          <div className="flex gap-12 text-4xl">
             <a href="#" aria-label="LinkedIn" className="hover:text-blue-500">
               <FaLinkedin />
             </a>
@@ -40,14 +40,14 @@ export default function Footer() {
         </div>
 
         {/* Paragraph + Logo on far right */}
-        <div className="w-1/3 pr-15 text-right space-y-3">
+        <div className="w-1/3 pr-2 py-5 text-right space-y-5">
           <p className="text-sm leading-snug">
             Your Go-To For <br />
             Personalized Workouts, <br />
             Meal Plans, And Expert <br />
             Fitness Advice
           </p>
-          <img src={ShaLogo} alt="SHA Logo" className="w-28 ml-auto md:-mt-2" />
+          <img src={ShaLogo} alt="SHA Logo" className="w-28 ml-auto md:-mt-8" />
         </div>
       </div>
 
@@ -97,7 +97,7 @@ export default function Footer() {
       </div>
 
       {/* Footer Bottom */}
-      <div className="text-center text-xs text-gray-400 border-t border-gray-700 pt-2 mt-6">
+      <div className="text-center text-xs text-gray-400 border-t border-gray-700 pt-2 mt-4">
         All rights reserved by SHA GYM @2025 | Design and Developed by{" "}
         <a
           href="https://www.bytehive.in"
