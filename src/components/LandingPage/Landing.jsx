@@ -111,7 +111,7 @@ const Landing = () => {
         </div>
       </div>
 
-      <div className="absolute right-2 bottom-14 z-50">
+      <div className="absolute right-0 bottom-14 z-40">
         <button className="bg-[grey] mr-[5rem]  text-black text-[1rem] md:text-[1.5rem] font-bold px-6 md:px-8 py-3 md:py-4 rounded-full shadow-md hover:bg-gray-200 transition cursor-pointer">
           Let's Start &gt;&gt;&gt;
         </button>

@@ -36,7 +36,7 @@ const Gallery = () => {
   });
 
   return (
-    <div ref={containerRef} className="gallery-container relative h-[320vh]">
+    <div ref={containerRef} className="gallery-container relative h-[360vh]">
       <div className="sticky top-0 h-screen bg-black text-white flex items-center justify-center overflow-hidden">
         <div className="relative w-full h-full">
           <h2 className="text-end text-8xl font-bold mb-16 animate-fadeIn mr-12">GALLERY</h2>
