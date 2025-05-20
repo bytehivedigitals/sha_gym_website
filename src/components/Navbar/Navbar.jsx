@@ -34,7 +34,7 @@ const Navbar = () => {
         src={logo}
         alt="SHA Logo"
         className="w-[9rem] ml-8 h-auto object-contain 
-                    filter saturate-100 hue-rotate-0 invert-[.30] sepia-[.90] drop-shadow-[0_0_10px_#f5deb3] transition-all duration-300" />
+                    hover:filter hover:saturate-100 hover:hue-rotate-0 hover:invert-[.30] hover:sepia-[.90] hover:drop-shadow-[0_0_10px_#f5deb3] transition-all duration-300" />
 
       {/* Desktop Nav Links */}
       <ul className="hidden md:flex gap-14 font-semibold text-sm uppercase">
@@ -54,8 +54,8 @@ const Navbar = () => {
       </ul>
 
       {/* Contact Us Button */}
-      <button className="hidden md:block font-bold text-xl mr-6 px-5 py-1.5 rounded-full
-                        text-[#f5deb3] border-2 border-[#f5deb3] hover:shadow-[0_0_10px_#f5deb3] hover:scale-110 transition-all duration-300 cursor-pointer">
+      <button className="hidden md:block bg-white text-black font-bold text-xl mr-6 px-5 py-1.5 rounded-full
+      hover:bg-transparent hover:text-[#f5deb3] hover:border-2 hover:border-[#f5deb3] hover:shadow-[0_0_10px_#f5deb3]  transition-all duration-300 ">
         CONTACT US
       </button>
 
