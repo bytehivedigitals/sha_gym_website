@@ -48,7 +48,6 @@ const WhatsAppButton = () => {
         >
           <FaWhatsapp size={32} color="black" />
           {/* Notification badge with number */}
-          <span className="wa-notification-badge">{notificationCount}</span>
         </button>
       </a>
       {/* Styles for notification, animation, and hover */}
@@ -76,7 +75,7 @@ const WhatsAppButton = () => {
             right: 8px;
             min-width: 20px;
             height: 20px;
-            background: #ff3b3b;
+
             border-radius: 50%;
             border: 2px solid #000;
             color: #fff;
@@ -85,7 +84,7 @@ const WhatsAppButton = () => {
             justify-content: center;
             font-size: 13px;
             font-weight: bold;
-            box-shadow: 0 0 10px #ff3b3b88;
+
             animation: wa-bounce 1s;
             pointer-events: none;
             user-select: none;
@@ -96,10 +95,7 @@ const WhatsAppButton = () => {
             40% { transform: translateY(-20px);}
             60% { transform: translateY(-10px);}
             80% { transform: translateY(-5px);}
-          }
-          .wa-bounce-pulse {
-            animation: wa-bounce 1s;
-          }
+
         `}
       </style>
     </>
