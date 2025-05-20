@@ -22,7 +22,7 @@ const Features = () => {
   }, []);
 
   return (
-    <section className="features-container px-4 sm:px-0 mt-8">
+    <section className="features-container px-4 sm:px-0 mt-16">
       {/* Header Section */}
       <div className="text-center mt-[-2rem]">
         <h1 className="text-2xl sm:text-3xl md:text-[6rem] font-bold mb-3" data-aos="zoom-in" data-aos-delay="100">

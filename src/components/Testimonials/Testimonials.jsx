@@ -3,6 +3,7 @@ import trainer1 from "../../assets/trainer.webp";
 import trainer2 from "../../assets/trainer2.webp";
 import trainer3 from "../../assets/trainer3.webp";
 import decorative from "../../assets/Shape 1.png";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 const testimonials = [
   {
@@ -68,11 +69,11 @@ const Testimonials = () => {
           </div>
 
           {/* Testimonial Box Overlapping */}
-          <div className="relative sm:absolute z-20 sm:-bottom-12 left-1/2 sm:left-2/3 transform -translate-x-2/3 translate-y-4 w-[50%] h-[30%] p-4 sm:p-6 mt-3 sm:mt-0 bg-[#D9D9D959] backdrop-blur-3xl rounded-4xl  text-white text-left shadow-xl">
-            <p className="italic text-xs xs:text-sm md:text-base leading-relaxed">
+          <div className="relative sm:absolute z-20 sm:-bottom-12 left-1/2 sm:left-2/3 transform -translate-x-2/3 translate-y-4 w-[50%] h-[40%] p-4 sm:py-[5%] sm:px-[5%] mt-3 sm:mt-0 bg-[#D9D9D959] backdrop-blur-3xl rounded-4xl  text-white text-left shadow-xl">
+            <p className="italic text-xs xs:text-sm md:text-base leading-relaxed mb-2">
               "{testimonials[index].text}"
             </p>
-            <p className="mt-3 sm:mt-4 text-xs md:text-sm font-semibold uppercase tracking-wide text-right">
+            <p className="mt-3 sm:mt-10 text-xs md:text-sm font-semibold uppercase tracking-wide text-left">
               - {testimonials[index].author}
             </p>
           </div>
@@ -84,17 +85,17 @@ const Testimonials = () => {
           <div className="flex gap-4 sm:gap-6 mb-4 lg:mb-8 mt-[-10%]">
             <button
               onClick={() => setIndex(index > 0 ? index - 1 : maxIndex)}
-              className="h-[20%] p-2 sm:p-3 rounded-full border border-white border-opacity-30 hover:bg-white hover:bg-opacity-20 transition"
+              className="h-[fit-content] p-3 sm:p-4 rounded-full border border-white border-opacity-30 hover:bg-white hover:bg-opacity-20 hover:text-black transition"
               aria-label="Previous testimonial"
             >
-              &#8592;
+              <FaArrowLeft className="w-5 h-5" />
             </button>
             <button
               onClick={() => setIndex(index < maxIndex ? index + 1 : 0)}
-              className="h-[20%] p-2 sm:p-3 rounded-full border border-white border-opacity-30 hover:bg-white hover:bg-opacity-20 transition"
+              className="h-[fit-content] p-3 sm:p-4 rounded-full border border-white border-opacity-30 hover:bg-white hover:bg-opacity-20 hover:text-black transition"
               aria-label="Next testimonial"
             >
-              &#8594;
+              <FaArrowRight className="w-5 h-5" />
             </button>
           </div>
 
