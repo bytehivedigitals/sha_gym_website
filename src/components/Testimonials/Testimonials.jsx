@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import trainer1 from "../../assets/trainer.webp";
+import trainer1 from "../../assets/trianer.png";
 import trainer2 from "../../assets/trainer2.webp";
 import trainer3 from "../../assets/trainer3.webp";
 import decorative from "../../assets/Shape 1.png";

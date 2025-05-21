@@ -1,8 +1,7 @@
-import React, { useState } from "react";
-import pre1 from "../../assets/Gym-6.webp";
+import React, { useState, useEffect } from "react";
+import pre1 from "../../assets/Gym-5.webp";
 import pre2 from "../../assets/pre1.webp";  
 import pre3 from "../../assets/pre2.webp";
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 const packages = [
   {
@@ -34,13 +33,13 @@ const packages = [
 export default function PersonalTrainingPackages({id}) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const nextPackage = () => {
-    setCurrentIndex((prev) => (prev === packages.length - 1 ? 0 : prev + 1));
-  };
-
-  const prevPackage = () => {
-    setCurrentIndex((prev) => (prev === 0 ? packages.length - 1 : prev - 1));
-  };
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev === packages.length - 1 ? 0 : prev + 1));
+    }, 3000); // Change every 4 seconds
+    
+    return () => clearInterval(interval); // Clean up interval on component unmount
+  }, []);
 
   return (
     <div id={id} className="personal-trainer-section min-h-screen bg-[black] flex flex-col items-center px-2 py-30">
@@ -51,16 +50,8 @@ export default function PersonalTrainingPackages({id}) {
         We're Your Partner In Achieving A Healthier, Stronger, And More Confident You.
       </p>
 
-      {/* Mobile View (single card with arrows) */}
+      {/* Mobile View (single card with auto-slide) */}
       <div className="md:hidden relative flex items-center justify-center w-full mt-10">
-        {/* Left Arrow */}
-        <button
-          onClick={prevPackage}
-          className="absolute left-2 z-20 p- rounded-full hover:bg-white/20 transition"
-        >
-          <FaArrowLeft className="w-6 h-6 text-white" />
-        </button>
-
         {/* Package Card */}
         <div
           className={`
@@ -97,14 +88,6 @@ export default function PersonalTrainingPackages({id}) {
             </button>
           </div>
         </div>
-
-        {/* Right Arrow */}
-        <button
-          onClick={nextPackage}
-          className="absolute right-2 z-20 p- rounded-full hover:bg-white/20 transition"
-        >
-          <FaArrowRight className="w-6 h-6 text-white" />
-        </button>
       </div>
 
       {/* Mobile Indicators */}
@@ -112,14 +95,14 @@ export default function PersonalTrainingPackages({id}) {
         {packages.map((_, index) => (
           <div
             key={index}
-            className={`w-3 h-3 rounded-full ${
+            className={`w-3 h-3 rounded-full transition-all duration-300 ${
               index === currentIndex ? "bg-white" : "bg-white/30"
             }`}
           />
         ))}
       </div>
 
-      {/* Desktop View (all cards) */}
+      {/* Desktop View (all cards) - unchanged */}
       <div className="hidden md:flex flex-col md:flex-row gap-6 md:gap-10 lg:gap-16 xl:gap-20 mt-10 md:mt-16 w-full items-center justify-center">
         {packages.map((pkg, i) => (
           <div

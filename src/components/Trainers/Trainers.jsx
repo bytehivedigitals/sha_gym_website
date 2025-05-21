@@ -1,28 +1,26 @@
-import React, { useState } from "react";
-import trainer1 from "../../assets/trianer.png";
+import React, { useState, useEffect } from "react";
+import trainer1 from "../../assets/trainer.webp";
 import trainer2 from "../../assets/trainer2.webp";
 import trainer3 from "../../assets/trainer3.webp";
 import bgImage from "../../assets/Shape 1.png";
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 const trainers = [
   { id: 1, name: "Abhiram", img: trainer1 },
   { id: 2, name: "Arun Raj", img: trainer2 },
   { id: 3, name: "Abhijith", img: trainer3 },
-  { id: 4, name: "Jishnu", img: trainer3 }, // Changed names to be unique
+  { id: 4, name: "Jishnu", img: trainer3 },
   { id: 5, name: "Riswan", img: trainer3 },
 ];
 
 const Trainers = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const nextTrainer = () => {
-    setCurrentIndex((prev) => (prev === trainers.length - 1 ? 0 : prev + 1));
-  };
-
-  const prevTrainer = () => {
-    setCurrentIndex((prev) => (prev === 0 ? trainers.length - 1 : prev - 1));
-  };
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev === trainers.length - 1 ? 0 : prev + 1));
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="trainers-container text-white mt-5 px-4 max-w-7xl mx-auto">
@@ -34,16 +32,8 @@ const Trainers = () => {
         Our Team Of Certified Trainers Brings Unparalleled Expertise
       </p>
 
-      {/* Mobile View (single trainer with arrows) */}
+      {/* Mobile View (auto-sliding trainer) */}
       <div className="md:hidden relative flex items-center justify-center">
-        {/* Left Arrow */}
-        <button
-          onClick={prevTrainer}
-          className="absolute left-0 z-20 p-2 rounded-full hover:bg-white/20 transition"
-        >
-          <FaArrowLeft className="w-6 h-6" />
-        </button>
-
         {/* Trainer Card */}
         <div className="relative flex flex-col items-center w-full">
           <img
@@ -60,14 +50,6 @@ const Trainers = () => {
             {trainers[currentIndex].name}
           </h3>
         </div>
-
-        {/* Right Arrow */}
-        <button
-          onClick={nextTrainer}
-          className="absolute right-0 z-20 p-2 rounded-full hover:bg-white/20 transition"
-        >
-          <FaArrowRight className="w-6 h-6" />
-        </button>
       </div>
 
       {/* Desktop View (5 trainers in a single row) */}
@@ -94,7 +76,7 @@ const Trainers = () => {
         {trainers.map((_, index) => (
           <div
             key={index}
-            className={`w-3 h-3 rounded-full ${
+            className={`w-3 h-3 rounded-full transition-all duration-300 ${
               index === currentIndex ? "bg-white" : "bg-white/30"
             }`}
           />
@@ -108,7 +90,7 @@ const Trainers = () => {
           .map((_, i) => (
             <span
               key={i}
-              className={`mx-1 ${
+              className={`mx-1 transition-opacity duration-300 ${
                 i === 0 ? "text-white opacity-100" : "text-white opacity-30"
               }`}
             >
