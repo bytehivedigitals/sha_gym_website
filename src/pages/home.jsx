@@ -25,7 +25,7 @@ const Home = () => {
       {/* Landing Page */}
       <Landing />
       {/* About Section */}
-      <Strip />
+      {/* <Strip /> */}
       <About id="about" />
       {/* Gallery Section */}
       <Gallery />
