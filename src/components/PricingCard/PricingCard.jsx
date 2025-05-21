@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import gym1 from "../../assets/prcimg.webp";
 
 const pricingData = [
@@ -53,18 +52,6 @@ const PricingCards = ({ id }) => {
       return () => clearInterval(interval);
     }
   }, [isMobile]);
-
-  const nextSlide = () => {
-    setCurrentIndex((prevIndex) => 
-      prevIndex === pricingData.length - 1 ? 0 : prevIndex + 1
-    );
-  };
-
-  const prevSlide = () => {
-    setCurrentIndex((prevIndex) => 
-      prevIndex === 0 ? pricingData.length - 1 : prevIndex - 1
-    );
-  };
 
   return (
     <section
@@ -157,13 +144,6 @@ const PricingCards = ({ id }) => {
 
           {/* Mobile Carousel View */}
           <div className="sm:hidden relative w-full max-w-md overflow-hidden">
-            <button 
-              onClick={prevSlide}
-              className="absolute left-2 top-1/3 -translate-y-1/2 z-20 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition-all"
-            >
-              <FaChevronLeft size={20} />
-            </button>
-            
             <div className="flex transition-transform duration-500 ease-in-out" 
                  style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
               {pricingData.map((item, idx) => (
@@ -198,21 +178,13 @@ const PricingCards = ({ id }) => {
                 </div>
               ))}
             </div>
-            
-            <button 
-              onClick={nextSlide}
-              className="absolute right-2 top-1/3 -translate-y-1/2 z-20 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition-all"
-            >
-              <FaChevronRight size={20} />
-            </button>
 
             {/* Indicators */}
             <div className="flex justify-center mt-4 space-x-2">
               {pricingData.map((_, idx) => (
-                <button
+                <div
                   key={idx}
-                  onClick={() => setCurrentIndex(idx)}
-                  className={`w-2 h-2 rounded-full ${currentIndex === idx ? 'bg-white' : 'bg-white/50'}`}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${currentIndex === idx ? 'bg-white' : 'bg-white/50'}`}
                 />
               ))}
             </div>
