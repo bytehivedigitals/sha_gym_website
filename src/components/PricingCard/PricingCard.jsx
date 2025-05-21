@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import gym1 from "../../assets/prcimg.webp";
 
 const pricingData = [
@@ -28,115 +29,198 @@ const pricingData = [
   },
 ];
 
-const PricingCards = ({id}) => (
-  <section
-    id={id}
-    className="
-      price-cards-container
-      w-full
-      min-h-[50rem]
-      flex
-      flex-col
-      justify-center
-      items-center
-      py-10
-      px-2
-      relative
-      mt-8
-      "
-  >
-    {/* BG IMAGE with 87% width */}
-    <div
-      className="
-        absolute
-        top-0 left-1/2
-        -translate-x-1/2
-        h-full
-        w-[87%]
-        bg-cover
-        bg-center
-        rounded-none
-        md:rounded-[2rem]
-        z-0
-      "
-      style={{
-        backgroundImage: `url(${gym1})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-    />
-    {/* Overlay for better readability on bg image */}
-    <div className="absolute top-0 left-1/2 -translate-x-1/2 h-full w-[87%] bg-black/30 rounded-none md:rounded-[2rem] pointer-events-none z-10" />
+const PricingCards = ({ id }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
-    {/* CONTENT BLOCK */}
-    <div className="relative z-20 w-full flex flex-col items-center">
-      <div className="w-full text-center mb-10">
-        <h2 className="text-4xl sm:text-5xl md:text-[4rem] font-extrabold uppercase text-white mb-2 leading-tight">
-          INSPIRED TO<br />INSPIRE YOUR BEST SELF
-        </h2>
-        <div className="text-base sm:text-lg md:text-[1rem] font-semibold text-white/90 tracking-wide">
-          INSPIRED TO INSPIRE YOUR BEST SELF INSPIRED TO INSPIRE YOUR BEST SELFINSPIRED TO INSPIRE YOUR BEST SELF
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 668);
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
+    if (isMobile) {
+      const interval = setInterval(() => {
+        setCurrentIndex((prevIndex) => 
+          prevIndex === pricingData.length - 1 ? 0 : prevIndex + 1
+        );
+      }, 3000);
+      return () => clearInterval(interval);
+    }
+  }, [isMobile]);
+
+  const nextSlide = () => {
+    setCurrentIndex((prevIndex) => 
+      prevIndex === pricingData.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex((prevIndex) => 
+      prevIndex === 0 ? pricingData.length - 1 : prevIndex - 1
+    );
+  };
+
+  return (
+    <section
+      id={id}
+      className="
+        price-cards-container
+        w-full
+        min-h-[50rem]
+        flex
+        flex-col
+        justify-center
+        items-center
+        py-10
+        px-2
+        relative
+        mt-8
+        "
+    >
+      {/* BG IMAGE with 87% width */}
+      <div
+        className="
+          absolute
+          top-0 left-1/2
+          -translate-x-1/2
+          h-full
+          w-[87%]
+          bg-cover
+          bg-center
+          rounded-none
+          md:rounded-[2rem]
+          z-0
+        "
+        style={{
+          backgroundImage: `url(${gym1})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      />
+      {/* Overlay for better readability on bg image */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 h-full w-[87%] bg-black/30 rounded-none md:rounded-[2rem] pointer-events-none z-10" />
+
+      {/* CONTENT BLOCK */}
+      <div className="relative z-20 w-full flex flex-col items-center">
+        <div className="w-[90%] text-center mb-10">
+          <h2 className="text-4xl sm:text-5xl md:text-[4rem] font-extrabold uppercase text-white mb-2 leading-tight">
+            INSPIRED TO<br />INSPIRE YOUR BEST SELF
+          </h2>
+          <div className="text-base sm:text-lg md:text-[1rem] font-semibold text-white/90 tracking-wide">
+            INSPIRED TO INSPIRE YOUR BEST SELF INSPIRED TO INSPIRE YOUR BEST SELFINSPIRED TO INSPIRE YOUR BEST SELF
+          </div>
         </div>
-      </div>
-      {/* PRICING CARDS */}
-      <div className="w-full max-w-[1400px] mx-auto px-1 sm:px-4 flex justify-center mt-8">
-        <div className="
-          grid
-          grid-cols-1
-          sm:grid-cols-2
-          lg:grid-cols-4
-          gap-6
-          md:gap-8
-          w-full
-        ">
-          {pricingData.map((item, idx) => (
-            <div
-              key={idx}
-              className="
-                bg-white/20
-                backdrop-blur-md
-                rounded-2xl
-                shadow-xl
-                flex
-                flex-col
-                items-center
-                px-4
-                py-8
-                sm:px-6
-                sm:py-10
-                text-center
-                border
-                border-white/30
-                min-w-0
-              "
-              data-aos="zoom-in"
-              data-aos-delay={100 * (idx + 1)}
-            >
-              <div className="text-lg sm:text-xl font-bold mb-6 text-white">{item.plan}</div>
-              <div className="relative mb-2 h-8 flex items-center justify-center w-full">
-                <span className="text-base sm:text-2xl text-white/60 font-bold line-through absolute left-1/2 -translate-x-1/2">{item.old}</span>
-                {/* Decorative strike-through line */}
-                <svg
-                  viewBox="0 0 80 20"
-                  className="absolute left-1/2 -translate-x-1/2"
-                  width={60}
-                  height={16}
-                  style={{ zIndex: 2, pointerEvents: "none" }}
-                >
-                  <line x1="5" y1="15" x2="55" y2="5" stroke="white" strokeWidth="3" strokeDasharray="4 2" />
-                </svg>
+        
+        {/* PRICING CARDS */}
+        <div className="w-full max-w-[1400px] mx-auto px-1 sm:px-4 flex justify-center mt-8">
+          {/* Desktop View */}
+          <div className="hidden sm:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 w-full">
+            {pricingData.map((item, idx) => (
+              <div
+                key={idx}
+                className="
+                  bg-white/20
+                  backdrop-blur-md
+                  rounded-2xl
+                  shadow-xl
+                  flex
+                  flex-col
+                  items-center
+                  px-4
+                  py-8
+                  sm:px-6
+                  sm:py-10
+                  text-center
+                  border
+                  border-white/30
+                  min-w-0
+                "
+              >
+                <div className="text-lg sm:text-xl font-bold mb-6 text-white">{item.plan}</div>
+                <div className="relative mb-2 h-8 flex items-center justify-center w-full">
+                  <span className="text-base sm:text-2xl text-white/60 font-bold line-through absolute left-1/2 -translate-x-1/2">{item.old}</span>
+                </div>
+                <div className="text-3xl sm:text-5xl font-extrabold mb-4 text-white">{item.price}</div>
+                <div className="text-xs sm:text-sm text-white/90 mb-8">{item.desc}</div>
+                <button className="bg-white text-black font-semibold rounded-lg px-5 py-2 shadow hover:bg-gray-400 transition cursor-pointer w-full sm:w-auto">
+                  JOIN NOW
+                </button>
               </div>
-              <div className="text-3xl sm:text-5xl font-extrabold mb-4 text-white">{item.price}</div>
-              <div className="text-xs sm:text-sm text-white/90 mb-8">{item.desc}</div>
-              <button className="bg-white text-black font-semibold rounded-lg px-5 py-2 shadow hover:bg-gray-400 transition cursor-pointer w-full sm:w-auto">
-                JOIN NOW
-              </button>
+            ))}
+          </div>
+
+          {/* Mobile Carousel View */}
+          <div className="sm:hidden relative w-full max-w-md overflow-hidden">
+            <button 
+              onClick={prevSlide}
+              className="absolute left-2 top-1/3 -translate-y-1/2 z-20 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition-all"
+            >
+              <FaChevronLeft size={20} />
+            </button>
+            
+            <div className="flex transition-transform duration-500 ease-in-out" 
+                 style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
+              {pricingData.map((item, idx) => (
+                <div
+                  key={idx}
+                  className="
+                    w-full
+                    flex-shrink-0
+                    px-4
+                    py-20
+                    bg-white/20
+                    backdrop-blur-md
+                    rounded-2xl
+                    shadow-xl
+                    flex
+                    flex-col
+                    items-center
+                    text-center
+                    border
+                    border-white/30
+                  "
+                >
+                  <div className="text-xl font-bold mb-6 text-white">{item.plan}</div>
+                  <div className="relative mb-2 h-15 flex items-center justify-center w-full">
+                    <span className="text-2xl text-white/60 font-bold line-through absolute left-1/2 -translate-x-1/2">{item.old}</span>
+                  </div>
+                  <div className="text-5xl font-extrabold mb-4 text-white">{item.price}</div>
+                  <div className="text-sm text-white/90 mb-8">{item.desc}</div>
+                  <button className="bg-white text-black font-semibold rounded-lg px-5 py-2 shadow hover:bg-gray-400 transition cursor-pointer w-full">
+                    JOIN NOW
+                  </button>
+                </div>
+              ))}
             </div>
-          ))}
+            
+            <button 
+              onClick={nextSlide}
+              className="absolute right-2 top-1/3 -translate-y-1/2 z-20 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition-all"
+            >
+              <FaChevronRight size={20} />
+            </button>
+
+            {/* Indicators */}
+            <div className="flex justify-center mt-4 space-x-2">
+              {pricingData.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setCurrentIndex(idx)}
+                  className={`w-2 h-2 rounded-full ${currentIndex === idx ? 'bg-white' : 'bg-white/50'}`}
+                />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export default PricingCards;
