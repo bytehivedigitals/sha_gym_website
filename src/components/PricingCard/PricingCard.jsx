@@ -4,27 +4,47 @@ import gym1 from "../../assets/prcimg.webp";
 const pricingData = [
   {
     plan: "MONTHLY",
-    old: "2500",
+    old: "2399",
     price: "1899",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.",
+    desc: [
+      "Unlimited 24/7 gym access",
+      "Full access to group fitness classes",
+      "Use of all amenities",
+      "Ideal for testing out SHA before a long-term commitment",
+    ],
   },
   {
     plan: "3 MONTH",
     old: "6500",
     price: "5700",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.",
+    desc: [
+      "1 Extra Month Free",
+      "4 months of access for the price of 3",
+      "Priority access to group classes",
+      "Monthly progress assessments",
+      "24/7 unlimited access",
+    ],
   },
   {
     plan: "6 MONTH",
-    old: "12,000",
+    old: "11,994",
     price: "10,000",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.",
+    desc: [
+      "Full facility access for 6 months",
+      "Complimentary wellness consultation",
+      "Goal-specific training guidance",
+    ],
   },
   {
     plan: "12 MONTH",
-    old: "16,000",
+    old: "22,788",
     price: "14,999",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.",
+    desc: [
+      "Huge savings on annual rates",
+      "Priority booking for trainers & classes",
+      "Seasonal wellness events access",
+      "Ideal for residents & regulars in Kozhikode",
+    ],
   },
 ];
 
@@ -111,7 +131,8 @@ const PricingCards = ({ id }) => {
             {pricingData.map((item, idx) => (
               <div
                 key={idx}
-                className="
+                className={`
+                  relative
                   bg-white/20
                   backdrop-blur-md
                   rounded-2xl
@@ -127,15 +148,28 @@ const PricingCards = ({ id }) => {
                   border
                   border-white/30
                   min-w-0
-                "
+                  ${(idx + 1) % 2 === 0 ? 'top-[-5%]' : 'top-0'}
+                  hover:scale-105
+                  transition-transform
+                  duration-300 
+                  ease-in-out
+                `}
               >
-                <div className="text-lg sm:text-xl font-bold mb-6 text-white">{item.plan}</div>
-                <div className="relative mb-2 h-8 flex items-center justify-center w-full">
-                  <span className="text-base sm:text-2xl text-white/60 font-bold line-through absolute left-1/2 -translate-x-1/2">{item.old}</span>
+                <div className="flex-1 w-full flex flex-col items-center">
+                  <div className="text-lg sm:text-xl font-extrabold mb-6 text-white">{item.plan}</div>
+                  <div className="relative mb-2 h-8 flex items-center justify-center w-full">
+                    <span className="text-base sm:text-2xl text-white/60 font-bold line-through absolute left-1/2 -translate-x-1/2">₹{item.old}</span>
+                  </div>
+                  <div className="text-3xl sm:text-5xl font-extrabold mb-4 text-white">₹{item.price}</div>
+                  <div className="mt-5">
+                    <ul className="text-xs sm:text-base text-white/90 mb-8 text-center list-inside space-y-3">
+                      {item.desc.map((point, index) => (
+                        <li key={index}>{point}</li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
-                <div className="text-3xl sm:text-5xl font-extrabold mb-4 text-white">{item.price}</div>
-                <div className="text-xs sm:text-sm text-white/90 mb-8">{item.desc}</div>
-                <button className="bg-white text-black font-semibold rounded-lg px-5 py-2 shadow hover:bg-gray-400 transition cursor-pointer w-full sm:w-auto">
+                <button className="absolute bottom-4 bg-white text-black font-semibold rounded-lg px-5 py-2 shadow hover:bg-red-500 hover:text-white transition cursor-pointer w-full sm:w-auto">
                   JOIN NOW
                 </button>
               </div>

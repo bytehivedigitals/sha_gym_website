@@ -42,12 +42,12 @@ const Features = ({id}) => {
           {/* Feature Cards */}
           <div className="w-full lg:w-[70%] grid grid-cols-1 sm:grid-cols-2 gap-6">
             {[
-              { title: "Nutrition Guidance", imgSrc: premium },
-              { title: "Premium Membership", imgSrc: nutri },
-              { title: "Expert Trainers", imgSrc: expert },
-              { title: "Community Support", imgSrc: support },
-              { title: "Progress Tracking", imgSrc: nutri },
-              { title: "Next-Level Fitness Spaces", imgSrc: premium },
+              { title: "24/7 Access", imgSrc: nutri },
+              { title: "Premium Membership", imgSrc: premium },
+              { title: "Certified Personal Trainers", imgSrc: expert },
+              { title: "Group Fitness Classes", imgSrc: support },
+              { title: "Washroom and rest room", imgSrc: nutri },
+              { title: "Nutrition & Wellness Support", imgSrc: premium },
             ].map((feature, index) => (
               <div
                 key={index}
