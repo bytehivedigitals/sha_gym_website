@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import trainer1 from "../../assets/trianer.png";
-import trainer2 from "../../assets/trainer2.webp";
-import trainer3 from "../../assets/trainer3.webp";
+import client1 from "../../assets/client1.webp";
+import client2 from "../../assets/client2.webp";
+import client3 from "../../assets/client3.webp";
 import decorative from "../../assets/Shape 1.png";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
@@ -10,19 +10,19 @@ const testimonials = [
     id: 1,
     text: "I Love The Variety Of Workouts On Fit Fusion. Whether It's HIIT, Yoga, Or Strength Training, There's Always Something New To Try. The Progress Tracking Tools Keep Me Motivated!",
     author: "rizwan p s",
-    img: trainer1,
+    img: client1,
   },
   {
     id: 2,
     text: "Thanks to Fit Fusion, I've achieved my fitness goals and feel more energetic than ever!",
     author: "neha j",
-    img: trainer2,
+    img: client2,
   },
   {
     id: 3,
     text: "Fit Fusion has changed my life. The programs are tailored and results-driven.",
     author: "rahul k",
-    img: trainer3,
+    img: client3,
   },
 ];
 
@@ -47,36 +47,36 @@ const Testimonials = () => {
       </p>
 
       {/* Mobile-only testimonial section (below 668px) */}
-<div className="md:hidden mt-8 relative flex items-center justify-center">
-  {/* Left Arrow */}
-  <button
-    onClick={() => setIndex(index > 0 ? index - 1 : maxIndex)}
-    className="p-3 rounded-full border border-white border-opacity-30 hover:bg-white hover:bg-opacity-20 hover:text-black transition z-10"
-    aria-label="Previous testimonial"
-    style={{ minWidth: 44, minHeight: 44 }} // for touch targets
-  >
-    <FaArrowLeft className="w-5 h-5" />
-  </button>
-  
-  {/* Testimonial Box */}
-  <div className="mx-3 flex-1 w-full p-6 bg-[#D9D9D959] backdrop-blur-3xl rounded-4xl text-white text-left shadow-xl">
-    <p className="italic text-sm leading-relaxed mb-2">
-      "{testimonials[index].text}"
-    </p>
-    <p className="mt-4 text-xs font-semibold uppercase tracking-wide text-left">
-      - {testimonials[index].author}
-    </p>
-  </div>
-  
-  {/* Right Arrow */}
-  <button
-    onClick={() => setIndex(index < maxIndex ? index + 1 : 0)}
-    className="p-3 rounded-full border border-white border-opacity-30 hover:bg-white hover:bg-opacity-20 hover:text-black transition z-10"
-    aria-label="Next testimonial"
-    style={{ minWidth: 44, minHeight: 44 }}
-  >
-    <FaArrowRight className="w-5 h-5" />
-  </button>
+      <div className="md:hidden mt-8 relative flex items-center justify-center">
+        {/* Left Arrow */}
+        <button
+          onClick={() => setIndex(index > 0 ? index - 1 : maxIndex)}
+          className="p-3 rounded-full border border-white border-opacity-30 hover:bg-white hover:bg-opacity-20 hover:text-black transition z-10"
+          aria-label="Previous testimonial"
+          style={{ minWidth: 44, minHeight: 44 }}
+        >
+          <FaArrowLeft className="w-5 h-5" />
+        </button>
+        
+        {/* Testimonial Box */}
+        <div className="mx-3 flex-1 w-full p-6 bg-[#D9D9D959] backdrop-blur-3xl rounded-4xl text-white text-left shadow-xl">
+          <p className="italic text-sm leading-relaxed mb-2">
+            "{testimonials[index].text}"
+          </p>
+          <p className="mt-4 text-xs font-semibold uppercase tracking-wide text-left">
+            - {testimonials[index].author}
+          </p>
+        </div>
+        
+        {/* Right Arrow */}
+        <button
+          onClick={() => setIndex(index < maxIndex ? index + 1 : 0)}
+          className="p-3 rounded-full border border-white border-opacity-30 hover:bg-white hover:bg-opacity-20 hover:text-black transition z-10"
+          aria-label="Next testimonial"
+          style={{ minWidth: 44, minHeight: 44 }}
+        >
+          <FaArrowRight className="w-5 h-5" />
+        </button>
       </div>
 
       {/* Desktop layout (668px and above) */}
@@ -91,11 +91,11 @@ const Testimonials = () => {
               alt="decorative"
               className="absolute top-10 left-[-20%] w-[100%] h-[100%] object-contain z-0"
             />
-            {/* Foreground trainer image */}
+            {/* Foreground trainer image (in color) */}
             <img
               src={testimonials[index].img}
               alt="trainer"
-              className="relative mt-[-8%] z-10 w-[50%] object-contain opacity-90"
+              className="relative mt-[-8%] z-10 w-[50%] object-contain opacity-90 filter grayscale-0"
             />
           </div>
 
@@ -130,20 +130,20 @@ const Testimonials = () => {
             </button>
           </div>
 
-          {/* Next two testimonial images */}
+          {/* Next two testimonial images (in grayscale) */}
           <div className="grid grid-cols-2 gap-4 w-full h-full">
             <div className="w-full h-[100%] bg-[#D9D9D959] rounded-3xl shadow-md flex justify-center items-center">
               <img
                 src={testimonials[(index + 1) % testimonials.length].img}
                 alt={`testimonial ${(index + 1) % testimonials.length + 1}`}
-                className="object-contain"
+                className="object-contain filter grayscale"
               />
             </div>
             <div className="w-full h-[100%] bg-[#D9D9D959] rounded-3xl shadow-md flex justify-center items-center mt-[-10%]">
               <img
                 src={testimonials[(index + 2) % testimonials.length].img}
                 alt={`testimonial ${(index + 2) % testimonials.length + 1}`}
-                className="object-contain"
+                className="object-contain filter grayscale"
               />
             </div>
           </div>
