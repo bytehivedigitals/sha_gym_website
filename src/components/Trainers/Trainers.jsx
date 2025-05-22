@@ -15,6 +15,7 @@ const trainers = [
 const Trainers = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [mobileHovered, setMobileHovered] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -33,10 +34,16 @@ const Trainers = () => {
         Our Team Of Certified Trainers Brings Unparalleled Expertise
       </p>
 
-      {/* Mobile View (auto-sliding trainer) */}
+      {/* Mobile View (auto-sliding trainer with color transform) */}
       <div className="md:hidden relative flex items-center justify-center">
         {/* Trainer Card */}
-        <div className="relative flex flex-col items-center w-full">
+        <div 
+          className="relative flex flex-col items-center w-full"
+          onTouchStart={() => setMobileHovered(true)}
+          onTouchEnd={() => setMobileHovered(false)}
+          onMouseEnter={() => setMobileHovered(true)}
+          onMouseLeave={() => setMobileHovered(false)}
+        >
           <img
             src={bgImage}
             alt="decorative"
@@ -45,9 +52,13 @@ const Trainers = () => {
           <img
             src={trainers[currentIndex].img}
             alt={trainers[currentIndex].name}
-            className="relative z-10 rounded-lg w-full h-[25rem] object-contain filter grayscale transition duration-500 hover:grayscale-0"
+            className={`relative z-10 rounded-lg w-full h-[25rem] object-contain transition duration-500 ${
+              mobileHovered ? "grayscale-0" : "grayscale"
+            }`}
           />
-          <h3 className="text-lg font-bold mt-4 z-10">
+          <h3 className={`text-lg font-bold mt-4 z-10 transition-colors duration-300 ${
+            mobileHovered ? "text-yellow-400" : "text-white"
+          }`}>
             {trainers[currentIndex].name}
           </h3>
         </div>
@@ -56,9 +67,12 @@ const Trainers = () => {
       {/* Desktop View (5 trainers in a single row) */}
       <div className="hidden md:grid grid-cols-5 gap-4">
         {trainers.map((trainer, index) => (
-          <div key={trainer.id} className="relative flex flex-col items-center group transition-transform duration-300"
+          <div 
+            key={trainer.id} 
+            className="relative flex flex-col items-center group transition-transform duration-300"
             onMouseEnter={() => setHoveredIndex(index)}
-            onMouseLeave={() => setHoveredIndex(null)}>
+            onMouseLeave={() => setHoveredIndex(null)}
+          >
             <img
               src={bgImage}
               alt="decorative"
@@ -71,7 +85,7 @@ const Trainers = () => {
                     ${hoveredIndex === index ? "scale-105 grayscale-0" : "grayscale"}`}
             />
             <h3 className={`text-xl font-bold mt-4 z-10 transition-all duration-300
-                          ${hoveredIndex === index ? "scale-105 text-yellow-400" : "text-white"}`}>
+                          ${hoveredIndex === index ? "scale-105 text-red-700" : "text-white"}`}>
               {trainer.name}
             </h3>
           </div>
@@ -98,7 +112,7 @@ const Trainers = () => {
             onMouseEnter={() => setHoveredIndex(i)}
             onMouseLeave={() => setHoveredIndex(null)}
             className={`mx-1 cursor-pointer transition-opacity duration-300
-                        ${hoveredIndex === i ? "text-yellow-400 opacity-100" : "text-white opacity-30"}`}>
+                        ${hoveredIndex === i ? "text-red-700 opacity-100" : "text-white opacity-30"}`}>
             /
           </span>
         ))}
