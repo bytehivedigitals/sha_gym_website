@@ -6,27 +6,43 @@ import pre3 from "../../assets/pre2.webp";
 const packages = [
   {
     name: "SILVER",
-    price: "8499",
+    price: "₹8,499",
     bg: "bg-gray-500/80",
     overlay: "bg-gray-800/40",
     button: "bg-white text-gray-800",
     img: pre3,
+    collection: [
+      "Weekly personal training sessions",
+      "Moderate guidance on form and nutrition",
+      "Ideal for those who need some push & planning",
+    ],
   },
   {
     name: "GOLD",
-    price: "9999",
+    price: "₹9,999",
     bg: "bg-yellow-700/80",
     overlay: "bg-yellow-900/40",
     button: "bg-white text-yellow-700",
     img: pre1,
+    collection: [
+      "Premium tier with full customization",
+      "Daily supervision and workouts",
+      "Nutritional guidance + lifestyle mentoring",
+      "Best suited for transformation plans or competitive goals",
+    ],
   },
   {
     name: "BRONZE",
-    price: "6999",
+    price: "₹6,999",
     bg: "bg-orange-900/80",
     overlay: "bg-orange-950/40",
     button: "bg-white text-orange-950",
     img: pre2,
+    collection: [
+      "Starter-friendly package",
+      "One-on-one sessions twice a week",
+      "Technique correction, confidence-building support",
+    ],
   },
 ];
 
@@ -136,9 +152,13 @@ export default function PersonalTrainingPackages({id}) {
                   {pkg.price}
                 </div>
               </div>
-              <p className="text-white text-base font-semibold text-center mt-4 mb-8">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-              </p>
+              <div>
+                <ul className="text-white text-xl font-semibold text-center mt-4 mb-8 space-y-4 list-inside">
+                  {pkg.collection.map((point, index) => (
+                    <li key={index}>{point}</li>
+                  ))}
+                </ul>
+              </div>
               <button
                 className={`mt-2 px-8 py-2 rounded-md font-bold text-lg font-['Russo_One',sans-serif] ${pkg.button} transition duration-200 shadow hover:scale-105 cursor-pointer`}
               >

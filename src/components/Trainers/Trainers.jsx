@@ -8,12 +8,13 @@ const trainers = [
   { id: 1, name: "Abhiram", img: trainer1 },
   { id: 2, name: "Arun Raj", img: trainer2 },
   { id: 3, name: "Abhijith", img: trainer3 },
-  { id: 4, name: "Jishnu", img: trainer3 },
-  { id: 5, name: "Riswan", img: trainer3 },
+  { id: 4, name: "Jishnu", img: trainer1 },
+  { id: 5, name: "Riswan", img: trainer2 },
 ];
 
 const Trainers = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [hoveredIndex, setHoveredIndex] = useState(null);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -54,8 +55,10 @@ const Trainers = () => {
 
       {/* Desktop View (5 trainers in a single row) */}
       <div className="hidden md:grid grid-cols-5 gap-4">
-        {trainers.map((trainer) => (
-          <div key={trainer.id} className="relative flex flex-col items-center">
+        {trainers.map((trainer, index) => (
+          <div key={trainer.id} className="relative flex flex-col items-center group transition-transform duration-300"
+            onMouseEnter={() => setHoveredIndex(index)}
+            onMouseLeave={() => setHoveredIndex(null)}>
             <img
               src={bgImage}
               alt="decorative"
@@ -64,9 +67,13 @@ const Trainers = () => {
             <img
               src={trainer.img}
               alt={trainer.name}
-              className="relative z-10 rounded-lg w-full h-[28rem] object-contain filter grayscale transition duration-500 hover:grayscale-0"
+              className={`relative z-10 rounded-lg w-full h-[28rem] object-contain transition duration-300
+                    ${hoveredIndex === index ? "scale-105 grayscale-0" : "grayscale"}`}
             />
-            <h3 className="text-xl font-bold mt-4 z-10">{trainer.name}</h3>
+            <h3 className={`text-xl font-bold mt-4 z-10 transition-all duration-300
+                          ${hoveredIndex === index ? "scale-105 text-yellow-400" : "text-white"}`}>
+              {trainer.name}
+            </h3>
           </div>
         ))}
       </div>
@@ -85,18 +92,16 @@ const Trainers = () => {
 
       {/* Desktop Slide Indicator */}
       <div className="hidden md:block mt-8 text-center text-2xl font-bold z-10">
-        {Array(5)
-          .fill("/")
-          .map((_, i) => (
-            <span
-              key={i}
-              className={`mx-1 transition-opacity duration-300 ${
-                i === 0 ? "text-white opacity-100" : "text-white opacity-30"
-              }`}
-            >
-              /
-            </span>
-          ))}
+        {Array(5).fill("/").map((_, i) => (
+          <span
+            key={i}
+            onMouseEnter={() => setHoveredIndex(i)}
+            onMouseLeave={() => setHoveredIndex(null)}
+            className={`mx-1 cursor-pointer transition-opacity duration-300
+                        ${hoveredIndex === i ? "text-yellow-400 opacity-100" : "text-white opacity-30"}`}>
+            /
+          </span>
+        ))}
       </div>
     </div>
   );

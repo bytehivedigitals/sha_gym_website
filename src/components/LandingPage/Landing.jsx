@@ -112,7 +112,7 @@ const Landing = () => {
       </div>
 
       <div className="absolute right-0 bottom-14 z-40">
-        <button className="bg-[grey] mr-[5rem]  text-black text-[1rem] md:text-[1.5rem] font-bold px-6 md:px-8 py-3 md:py-4 rounded-full shadow-md hover:bg-gray-200 transition cursor-pointer"
+        <button className="bg-gray-200 mr-[5rem]  text-black text-[1rem] md:text-[1.5rem] font-bold px-6 md:px-8 py-3 md:py-4 rounded-full shadow-md hover:bg-gray-200 transition cursor-pointer"
           onClick={() => {
             const section = document.getElementById("personalTrainingPack");
             if (section) {
