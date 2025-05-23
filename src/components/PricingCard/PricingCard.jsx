@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import gym1 from "../../assets/prcimg.webp";
+import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 
 const pricingData = [
   {
@@ -49,99 +50,80 @@ const pricingData = [
 ];
 
 const PricingCards = ({ id }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
-  const carouselRef = useRef(null);
-  const animationRef = useRef(null);
-  const scrollSpeed = 50; // pixels per second
+  const cardRefs = useRef([]);
+  const containerRef = useRef(null);
 
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
     };
-
     handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   useEffect(() => {
-    if (!isMobile || !carouselRef.current) return;
+    if (!isMobile) return;
+    
+    const interval = setInterval(() => {
+      const nextIndex = currentIndex === pricingData.length - 1 ? 0 : currentIndex + 1;
+      scrollToCard(nextIndex);
+    }, 3000);
+    
+    return () => clearInterval(interval);
+  }, [isMobile, currentIndex]);
 
-    const carousel = carouselRef.current;
-    const carouselContent = carousel.firstChild;
-    let position = 0;
-    let lastTimestamp = 0;
-
-    // Clone all cards and append them to create infinite loop
-    const clonedCards = Array.from(carouselContent.children).map(child => child.cloneNode(true));
-    carouselContent.append(...clonedCards);
-
-    const animate = (timestamp) => {
-      if (!lastTimestamp) lastTimestamp = timestamp;
-      const delta = timestamp - lastTimestamp;
-      lastTimestamp = timestamp;
-
-      position += (scrollSpeed * delta) / 1000;
+  const scrollToCard = (index) => {
+    setCurrentIndex(index);
+    if (containerRef.current && cardRefs.current[index]) {
+      const container = containerRef.current;
+      const card = cardRefs.current[index];
+      const containerWidth = container.offsetWidth;
+      const cardWidth = card.offsetWidth;
+      const scrollPosition = card.offsetLeft - (containerWidth / 2) + (cardWidth / 2);
       
-      // Reset position when scrolled all cloned cards
-      if (position >= carouselContent.scrollWidth / 2) {
-        position = 0;
-      }
-      
-      carousel.scrollLeft = position;
-      animationRef.current = requestAnimationFrame(animate);
-    };
+      container.scrollTo({
+        left: scrollPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
 
-    animationRef.current = requestAnimationFrame(animate);
-
-    return () => {
-      if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current);
+  const handleScroll = () => {
+    if (!containerRef.current) return;
+    
+    const container = containerRef.current;
+    const scrollPosition = container.scrollLeft + (container.offsetWidth / 2);
+    
+    pricingData.forEach((_, index) => {
+      const card = cardRefs.current[index];
+      if (card && scrollPosition >= card.offsetLeft && scrollPosition < card.offsetLeft + card.offsetWidth) {
+        setCurrentIndex(index);
       }
-    };
-  }, [isMobile]);
+    });
+  };
 
   return (
     <section
       id={id}
-      className="
-        price-cards-container
-        w-full
-        min-h-[50rem]
-        flex
-        flex-col
-        justify-center
-        items-center
-        py-10
-        px-2
-        relative
-        mt-8
-        "
+      className="price-cards-container w-full min-h-[50rem] flex flex-col justify-center items-center py-10 px-2 relative mt-8"
     >
-      {/* BG IMAGE with 87% width */}
-      <div
-        className="
-          absolute
-          top-0 left-1/2
-          -translate-x-1/2
-          h-full
-          w-[87%]
-          bg-cover
-          bg-center
-          rounded-none
-          md:rounded-[2rem]
-          z-0
-        "
-        style={{
+      {/* Background Image */}
+      <div 
+        className="absolute top-0 left-1/2 -translate-x-1/2 h-full w-[87%] bg-cover bg-center rounded-none md:rounded-[2rem] z-0"
+        style={{ 
           backgroundImage: `url(${gym1})`,
           backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
+          backgroundPosition: "center"
+        }} 
       />
-      {/* Overlay for better readability on bg image */}
+      
+      {/* Overlay */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 h-full w-[87%] bg-black/30 rounded-none md:rounded-[2rem] pointer-events-none z-10" />
 
-      {/* CONTENT BLOCK */}
+      {/* Content */}
       <div className="relative z-20 w-full flex flex-col items-center">
         <div className="w-[90%] text-center mb-10">
           <h2 className="text-4xl sm:text-5xl md:text-[4rem] font-extrabold uppercase text-white mb-2 leading-tight">
@@ -152,35 +134,19 @@ const PricingCards = ({ id }) => {
           </div>
         </div>
         
-        {/* PRICING CARDS */}
+        {/* Pricing Cards */}
         <div className="w-full max-w-[1400px] mx-auto px-1 sm:px-4 flex justify-center mt-8">
-          {/* Desktop View - Grid */}
+          {/* Desktop View */}
           <div className="hidden md:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 w-full">
             {pricingData.map((item, idx) => (
               <div
                 key={idx}
                 className={`
-                  relative
-                  bg-white/20
-                  backdrop-blur-md
-                  rounded-2xl
-                  shadow-xl
-                  flex
-                  flex-col
-                  items-center
-                  px-4
-                  py-8
-                  sm:px-6
-                  sm:py-10
-                  text-center
-                  border
-                  border-white/30
-                  min-w-0
+                  relative bg-white/20 backdrop-blur-md rounded-2xl shadow-xl
+                  flex flex-col items-center px-4 py-8 sm:px-6 sm:py-10 text-center
+                  border border-white/30 min-w-0 transition-transform duration-300 ease-in-out
                   ${(idx + 1) % 2 === 0 ? 'top-[-5%]' : 'top-0'}
                   hover:scale-105
-                  transition-transform
-                  duration-300 
-                  ease-in-out
                 `}
               >
                 <div className="flex-1 w-full flex flex-col items-center">
@@ -204,55 +170,78 @@ const PricingCards = ({ id }) => {
             ))}
           </div>
 
-          {/* Mobile View - Horizontal Scrolling Carousel */}
-          <div className="md:hidden w-full overflow-hidden">
+          {/* Mobile View */}
+          <div className="md:hidden w-full">
+            {/* Cards Container */}
             <div 
-              ref={carouselRef}
-              className="flex overflow-x-auto scrollbar-hide py-4"
-              style={{ scrollBehavior: 'auto', scrollSnapType: 'x mandatory' }}
+              ref={containerRef}
+              className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide w-full py-4"
+              onScroll={handleScroll}
+              style={{ scrollBehavior: 'smooth' }}
             >
-              <div className="flex space-x-6 px-4">
+              <div className="flex px-4 gap-4">
                 {pricingData.map((item, idx) => (
                   <div
                     key={idx}
-                    className="
-                      bg-white/20
-                      backdrop-blur-md
-                      rounded-2xl
-                      shadow-xl
-                      flex
-                      flex-col
-                      items-center
-                      px-6
-                      py-8
-                      text-center
-                      border
-                      border-white/30
-                      min-w-[85vw]
-                      flex-shrink-0
-                      scroll-snap-align-start
-                    "
+                    ref={el => cardRefs.current[idx] = el}
+                    className={`flex-shrink-0 w-[85vw] transition-all duration-300 ${
+                      currentIndex === idx ? 'scale-100 opacity-100' : 'scale-90 opacity-70'
+                    }`}
                   >
-                    <div className="flex-1 w-full flex flex-col items-center">
-                      <div className="text-xl font-extrabold mb-6 text-white">{item.plan}</div>
-                      <div className="relative mb-2 h-8 flex items-center justify-center w-full">
-                        <span className="text-2xl text-white/60 font-bold line-through">₹{item.old}</span>
+                    <div className="bg-white/20 backdrop-blur-md rounded-2xl shadow-xl flex flex-col items-center px-6 py-8 text-center border border-white/30 h-full">
+                      <div className="flex-1 w-full flex flex-col items-center">
+                        <div className="text-xl font-extrabold mb-6 text-white">{item.plan}</div>
+                        <div className="relative mb-2 h-8 flex items-center justify-center w-full">
+                          <span className="text-2xl text-white/60 font-bold line-through">₹{item.old}</span>
+                        </div>
+                        <div className="text-4xl font-extrabold mb-6 text-white">₹{item.price}</div>
+                        <div className="mt-3 w-full">
+                          <ul className="text-sm text-white/90 mb-8 text-center space-y-3">
+                            {item.desc.map((point, index) => (
+                              <li key={index}>{point}</li>
+                            ))}
+                          </ul>
+                        </div>
                       </div>
-                      <div className="text-4xl font-extrabold mb-6 text-white">₹{item.price}</div>
-                      <div className="mt-3 w-full">
-                        <ul className="text-sm text-white/90 mb-8 text-center space-y-3">
-                          {item.desc.map((point, index) => (
-                            <li key={index}>{point}</li>
-                          ))}
-                        </ul>
-                      </div>
+                      <button className="bg-white text-black font-semibold rounded-lg px-5 py-3 shadow-lg hover:bg-red-500 hover:text-white transition-all duration-300 cursor-pointer w-full">
+                        JOIN NOW
+                      </button>
                     </div>
-                    <button className="bg-white text-black font-semibold rounded-lg px-5 py-3 shadow-lg hover:bg-red-500 hover:text-white transition-all duration-300 cursor-pointer w-full">
-                      JOIN NOW
-                    </button>
                   </div>
                 ))}
               </div>
+            </div>
+
+            {/* Navigation Controls */}
+            <div className="flex justify-between items-center mt-6 px-4">
+              <button 
+                onClick={() => scrollToCard(currentIndex > 0 ? currentIndex - 1 : pricingData.length - 1)}
+                className="p-3 rounded-full bg-white/20 hover:bg-white/30 transition"
+                aria-label="Previous plan"
+              >
+                <FaArrowLeft className="text-white text-lg" />
+              </button>
+              
+              <div className="flex gap-2">
+                {pricingData.map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => scrollToCard(idx)}
+                    className={`w-3 h-3 rounded-full transition-all ${
+                      currentIndex === idx ? 'bg-white w-6' : 'bg-white/30'
+                    }`}
+                    aria-label={`Go to plan ${idx + 1}`}
+                  />
+                ))}
+              </div>
+              
+              <button 
+                onClick={() => scrollToCard(currentIndex < pricingData.length - 1 ? currentIndex + 1 : 0)}
+                className="p-3 rounded-full bg-white/20 hover:bg-white/30 transition"
+                aria-label="Next plan"
+              >
+                <FaArrowRight className="text-white text-lg" />
+              </button>
             </div>
           </div>
         </div>

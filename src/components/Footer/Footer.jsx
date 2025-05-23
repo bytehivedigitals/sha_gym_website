@@ -30,7 +30,7 @@ export default function Footer() {
             <a href="#" aria-label="LinkedIn" className="hover:text-blue-500">
               <FaLinkedin />
             </a>
-            <a href="#" aria-label="Instagram" className="hover:text-pink-500">
+            <a href="https://www.instagram.com/shahealthstudio?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" aria-label="Instagram" className="hover:text-pink-500">
               <FaInstagram />
             </a>
             <a href="#" aria-label="Facebook" className="hover:text-blue-700">
