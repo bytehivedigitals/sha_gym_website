@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import trainer1 from "../../assets/trainer.webp";
-import trainer2 from "../../assets/trainer2.webp";
-import trainer3 from "../../assets/trainer3.webp";
+import trainer2 from "../../assets/trainer3.webp";
+import trainer3 from "../../assets/trainer2.webp";
 import bgImage from "../../assets/Shape 1.png";
 
 const trainers = [
-  { id: 1, name: "Abhiram", img: trainer1 },
-  { id: 2, name: "Arun Raj", img: trainer2 },
-  { id: 3, name: "Abhijith", img: trainer3 },
+  { id: 1, name: "Ami", img: trainer1 },
+  { id: 2, name: "SHA", img: trainer2 },
+  { id: 3, name: "Aash", img: trainer3 },
 ];
 
 const Trainers = () => {
