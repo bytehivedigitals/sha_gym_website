@@ -1,12 +1,19 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Home from "./pages/home";
-import Loader from "./components//Loader/Loader";
+import Loader from "./components/Loader/Loader";
 import "./index.css";
-import 'aos/dist/aos.css';
+import "aos/dist/aos.css";
 
 function App() {
   const [isVideoEnded, setIsVideoEnded] = useState(false);
+
+  useEffect(() => {
+    // If mobile, immediately skip the loader
+    if (window.innerWidth < 768) {
+      setIsVideoEnded(true);
+    }
+  }, []);
 
   return (
     <div className="relative">
