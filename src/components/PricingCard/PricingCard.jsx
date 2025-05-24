@@ -212,36 +212,23 @@ const PricingCards = ({ id }) => {
               </div>
             </div>
 
-            {/* Navigation Controls */}
-            <div className="flex justify-between items-center mt-6 px-4">
-              <button 
-                onClick={() => scrollToCard(currentIndex > 0 ? currentIndex - 1 : pricingData.length - 1)}
-                className="p-3 rounded-full bg-white/20 hover:bg-white/30 transition"
-                aria-label="Previous plan"
-              >
-                <FaArrowLeft className="text-white text-lg" />
-              </button>
-              
-              <div className="flex gap-2">
-                {pricingData.map((_, idx) => (
-                  <button
-                    key={idx}
-                    onClick={() => scrollToCard(idx)}
-                    className={`w-3 h-3 rounded-full transition-all ${
-                      currentIndex === idx ? 'bg-white w-6' : 'bg-white/30'
-                    }`}
-                    aria-label={`Go to plan ${idx + 1}`}
-                  />
+            {/* Navigation Controls - Only dots */}
+            <div className="flex justify-center items-center mt-6 px-4">
+  <div className="flex gap-2">
+    {pricingData.map((_, idx) => (
+      <button
+        key={idx}
+        onClick={() => scrollToCard(idx)}
+        className={`
+          w-3 h-3 rounded-full transition-all duration-300 ease-in-out
+          ${currentIndex === idx ? 'bg-red-700 w-6' : 'bg-white/30'}
+          hover:bg-white/70 hover:scale-110 cursor-pointer
+          focus:outline-none focus:ring-2 focus:ring-white/50
+        `}
+        aria-label={`Go to plan ${idx + 1}`}
+      />
                 ))}
               </div>
-              
-              <button 
-                onClick={() => scrollToCard(currentIndex < pricingData.length - 1 ? currentIndex + 1 : 0)}
-                className="p-3 rounded-full bg-white/20 hover:bg-white/30 transition"
-                aria-label="Next plan"
-              >
-                <FaArrowRight className="text-white text-lg" />
-              </button>
             </div>
           </div>
         </div>
