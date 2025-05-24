@@ -41,8 +41,8 @@ const Landing = () => {
       <div className={` relative bg-black text-white flex ${isMobile ? 'w-[100%] min-h-[fit-content] flex-col' : 'min-h-[100vh] justify-center'} overflow-hidden`}>
         <div className="relative w-full">
           {/* Text in the background */}
-          <div className={`relative inset-0 z-0 flex ${isMobile ? 'text-left mt-16 ml-4' : 'justify-center text-center px-4 mt-6'}`}>
-            <h1 className="!text-[2.8rem] md:!text-[5rem] lg:!text-[6rem] font-extrabold tracking-wide leading-tight">
+          <div className={`landing-header relative inset-0 z-0 flex ${isMobile ? 'text-left text-2xl ml-4' : 'justify-center text-center px-4 mt-6'}`}>
+            <h1 className="font-extrabold tracking-wide leading-tight">
               {isMobile ? (
                 <>
                   SCULPT <span className="text-gray-400">YOUR</span><br />
@@ -63,7 +63,7 @@ const Landing = () => {
           <img
             src={isMobile ? hitmanMobile : hitman}
             alt="Hitman"
-            className={`${isMobile ? 'absolute right-[-5%] top-[-10%] object-cover z-20' : 'absolute inset-0 w-full h-full object-contain z-20'}`}
+            className={`landing-img ${isMobile ? 'absolute right-0 object-cover z-20' : 'absolute inset-0 w-full h-full object-contain z-20'}`}
           />
         </div>
 
@@ -85,8 +85,8 @@ const Landing = () => {
           </div>
         </div>
 
-        <div className={`${isMobile ? 'relative pb-8 px-4 flex mt-4' : 'absolute right-0 bottom-14'} z-40`}>
-          <button className={`bg-gray-200 ${isMobile ? '' : 'mr-[5rem]'} text-black text-[1.2rem] md:text-[1.5rem] font-bold px-6 md:px-8 py-3 md:py-4 rounded-full shadow-md hover:bg-gray-200 transition cursor-pointer`}
+        <div className={`start-button ${isMobile ? 'relative pb-8 px-4 flex mt-4' : 'absolute right-0 bottom-14'} z-40`}>
+          <button className={`bg-gray-200 ${isMobile ? '' : 'mr-[5rem]'} text-black text-[1.2rem] md:text-[1.5rem] font-bold px-6 md:px-8 py-3 md:py-4 rounded-full shadow-md hover:bg-[grey] transition cursor-pointer`}
             onClick={() => {
               const section = document.getElementById("personalTrainingPack");
               if (section) {
