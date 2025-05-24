@@ -54,6 +54,7 @@ const PricingCards = ({ id }) => {
   const [isMobile, setIsMobile] = useState(false);
   const cardRefs = useRef([]);
   const containerRef = useRef(null);
+  const [isAutoScrolling, setIsAutoScrolling] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -68,14 +69,17 @@ const PricingCards = ({ id }) => {
     if (!isMobile) return;
     
     const interval = setInterval(() => {
-      const nextIndex = currentIndex === pricingData.length - 1 ? 0 : currentIndex + 1;
-      scrollToCard(nextIndex);
+      if (!isAutoScrolling) {
+        const nextIndex = currentIndex === pricingData.length - 1 ? 0 : currentIndex + 1;
+        scrollToCard(nextIndex);
+      }
     }, 3000);
     
     return () => clearInterval(interval);
-  }, [isMobile, currentIndex]);
+  }, [isMobile, currentIndex, isAutoScrolling]);
 
   const scrollToCard = (index) => {
+    setIsAutoScrolling(true);
     setCurrentIndex(index);
     if (containerRef.current && cardRefs.current[index]) {
       const container = containerRef.current;
@@ -89,10 +93,11 @@ const PricingCards = ({ id }) => {
         behavior: 'smooth'
       });
     }
+    setTimeout(() => setIsAutoScrolling(false), 1000);
   };
 
   const handleScroll = () => {
-    if (!containerRef.current) return;
+    if (!containerRef.current || isAutoScrolling) return;
     
     const container = containerRef.current;
     const scrollPosition = container.scrollLeft + (container.offsetWidth / 2);
@@ -103,6 +108,16 @@ const PricingCards = ({ id }) => {
         setCurrentIndex(index);
       }
     });
+  };
+
+  const handleJoinNow = (plan) => {
+    // Replace with your actual join now logic
+    console.log(`Joining ${plan} plan`);
+    alert(`You selected the ${plan} plan!`);
+    // Here you would typically:
+    // 1. Redirect to a signup page
+    // 2. Open a modal
+    // 3. Add to cart, etc.
   };
 
   return (
@@ -163,7 +178,10 @@ const PricingCards = ({ id }) => {
                     </ul>
                   </div>
                 </div>
-                <button className="absolute bottom-4 bg-white text-black font-semibold rounded-lg px-5 py-2 shadow hover:bg-red-500 hover:text-white transition cursor-pointer w-full sm:w-auto">
+                <button 
+                  onClick={() => handleJoinNow(item.plan)}
+                  className="absolute bottom-4 bg-white text-black font-semibold rounded-lg px-5 py-2 shadow hover:bg-red-500 hover:text-white transition cursor-pointer w-full sm:w-auto"
+                >
                   JOIN NOW
                 </button>
               </div>
@@ -171,7 +189,7 @@ const PricingCards = ({ id }) => {
           </div>
 
           {/* Mobile View */}
-          <div className="md:hidden w-full rounded-2x1">
+          <div className="md:hidden w-full rounded-2xl">
             {/* Cards Container */}
             <div 
               ref={containerRef}
@@ -203,7 +221,10 @@ const PricingCards = ({ id }) => {
                           </ul>
                         </div>
                       </div>
-                      <button className="bg-white text-black font-semibold rounded-lg px-5 py-3 shadow-lg hover:bg-red-500 hover:text-white transition-all duration-300 cursor-pointer w-full">
+                      <button 
+                        onClick={() => handleJoinNow(item.plan)}
+                        className="bg-white text-black font-semibold rounded-lg px-5 py-3 shadow-lg hover:bg-red-500 hover:text-white transition-all duration-300 cursor-pointer w-full"
+                      >
                         JOIN NOW
                       </button>
                     </div>
@@ -214,19 +235,19 @@ const PricingCards = ({ id }) => {
 
             {/* Navigation Controls - Only dots */}
             <div className="flex justify-center items-center mt-6 px-4">
-  <div className="flex gap-2">
-    {pricingData.map((_, idx) => (
-      <button
-        key={idx}
-        onClick={() => scrollToCard(idx)}
-        className={`
-          w-3 h-3 rounded-full transition-all duration-300 ease-in-out
-          ${currentIndex === idx ? 'bg-red-700 w-6' : 'bg-white/30'}
-          hover:bg-white/70 hover:scale-110 cursor-pointer
-          focus:outline-none focus:ring-2 focus:ring-white/50
-        `}
-        aria-label={`Go to plan ${idx + 1}`}
-      />
+              <div className="flex gap-2">
+                {pricingData.map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => scrollToCard(idx)}
+                    className={`
+                      w-3 h-3 rounded-full transition-all duration-300 ease-in-out hover:bg-red
+                      ${currentIndex === idx ? 'bg-red-700 w-6' : 'bg-white/30'}
+                      hover:bg-white/70 hover:scale-110 cursor-pointer
+                      focus:outline-none focus:ring-2 focus:ring-white/50
+                    `}
+                    aria-label={`Go to plan ${idx + 1}`}
+                  />
                 ))}
               </div>
             </div>
