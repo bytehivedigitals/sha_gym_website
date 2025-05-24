@@ -8,8 +8,6 @@ const trainers = [
   { id: 1, name: "Abhiram", img: trainer1 },
   { id: 2, name: "Arun Raj", img: trainer2 },
   { id: 3, name: "Abhijith", img: trainer3 },
-  { id: 4, name: "Jishnu", img: trainer1 },
-  { id: 5, name: "Riswan", img: trainer2 },
 ];
 
 const Trainers = () => {
@@ -57,15 +55,15 @@ const Trainers = () => {
             }`}
           />
           <h3 className={`text-lg font-bold mt-4 z-10 transition-colors duration-300 ${
-            mobileHovered ? "text-yellow-400" : "text-white"
+            mobileHovered ? "text-red-700" : "text-white"
           }`}>
             {trainers[currentIndex].name}
           </h3>
         </div>
       </div>
 
-      {/* Desktop View (5 trainers in a single row) */}
-      <div className="hidden md:grid grid-cols-5 gap-4">
+      {/* Desktop View (3 trainers in a single row) */}
+      <div className="hidden md:grid grid-cols-3 gap-4">
         {trainers.map((trainer, index) => (
           <div 
             key={trainer.id} 
@@ -94,19 +92,25 @@ const Trainers = () => {
 
       {/* Mobile Slide Indicators */}
       <div className="md:hidden mt-6 flex justify-center gap-2">
-        {trainers.map((_, index) => (
-          <div
-            key={index}
-            className={`w-3 h-3 rounded-full transition-all duration-300 ${
-              index === currentIndex ? "bg-white" : "bg-white/30"
-            }`}
-          />
+  {trainers.map((_, index) => (
+    <button
+      key={index}
+      onClick={() => setCurrentIndex(index)}
+      className={`w-3 h-3 rounded-full transition-all duration-300 cursor-pointer
+        ${index === currentIndex ? 
+          'bg-white scale-125' : 
+          'bg-white/30 hover:bg-white/70 hover:scale-110'
+        }
+        transform hover:shadow-[0_0_8px_rgba(255,255,255,0.7)]
+        focus:outline-none focus:ring-2 focus:ring-white/50`}
+      aria-label={`Go to trainer ${index + 1}`}
+    />
         ))}
       </div>
 
       {/* Desktop Slide Indicator */}
       <div className="hidden md:block mt-8 text-center text-2xl font-bold z-10">
-        {Array(5).fill("/").map((_, i) => (
+        {Array(3).fill("/").map((_, i) => (
           <span
             key={i}
             onMouseEnter={() => setHoveredIndex(i)}

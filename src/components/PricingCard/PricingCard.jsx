@@ -171,7 +171,7 @@ const PricingCards = ({ id }) => {
           </div>
 
           {/* Mobile View */}
-          <div className="md:hidden w-full">
+          <div className="md:hidden w-full rounded-2x1">
             {/* Cards Container */}
             <div 
               ref={containerRef}
@@ -192,11 +192,11 @@ const PricingCards = ({ id }) => {
                       <div className="flex-1 w-full flex flex-col items-center">
                         <div className="text-xl font-extrabold mb-6 text-white">{item.plan}</div>
                         <div className="relative mb-2 h-8 flex items-center justify-center w-full">
-                          <span className="text-2xl text-white/60 font-bold line-through">₹{item.old}</span>
+                          <span className="text-3xl text-white/60 font-bold line-through">₹{item.old}</span>
                         </div>
-                        <div className="text-4xl font-extrabold mb-6 text-white">₹{item.price}</div>
+                        <div className="text-6xl font-extrabold mb-6 text-white">₹{item.price}</div>
                         <div className="mt-3 w-full">
-                          <ul className="text-sm text-white/90 mb-8 text-center space-y-3">
+                          <ul className="text-[1.2rem] text-white/90 mb-8 text-center space-y-3">
                             {item.desc.map((point, index) => (
                               <li key={index}>{point}</li>
                             ))}
@@ -212,36 +212,23 @@ const PricingCards = ({ id }) => {
               </div>
             </div>
 
-            {/* Navigation Controls */}
-            <div className="flex justify-between items-center mt-6 px-4">
-              <button 
-                onClick={() => scrollToCard(currentIndex > 0 ? currentIndex - 1 : pricingData.length - 1)}
-                className="p-3 rounded-full bg-white/20 hover:bg-white/30 transition"
-                aria-label="Previous plan"
-              >
-                <FaArrowLeft className="text-white text-lg" />
-              </button>
-              
-              <div className="flex gap-2">
-                {pricingData.map((_, idx) => (
-                  <button
-                    key={idx}
-                    onClick={() => scrollToCard(idx)}
-                    className={`w-3 h-3 rounded-full transition-all ${
-                      currentIndex === idx ? 'bg-white w-6' : 'bg-white/30'
-                    }`}
-                    aria-label={`Go to plan ${idx + 1}`}
-                  />
+            {/* Navigation Controls - Only dots */}
+            <div className="flex justify-center items-center mt-6 px-4">
+  <div className="flex gap-2">
+    {pricingData.map((_, idx) => (
+      <button
+        key={idx}
+        onClick={() => scrollToCard(idx)}
+        className={`
+          w-3 h-3 rounded-full transition-all duration-300 ease-in-out
+          ${currentIndex === idx ? 'bg-red-700 w-6' : 'bg-white/30'}
+          hover:bg-white/70 hover:scale-110 cursor-pointer
+          focus:outline-none focus:ring-2 focus:ring-white/50
+        `}
+        aria-label={`Go to plan ${idx + 1}`}
+      />
                 ))}
               </div>
-              
-              <button 
-                onClick={() => scrollToCard(currentIndex < pricingData.length - 1 ? currentIndex + 1 : 0)}
-                className="p-3 rounded-full bg-white/20 hover:bg-white/30 transition"
-                aria-label="Next plan"
-              >
-                <FaArrowRight className="text-white text-lg" />
-              </button>
             </div>
           </div>
         </div>

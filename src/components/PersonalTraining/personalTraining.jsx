@@ -81,12 +81,12 @@ export default function PersonalTrainingPackages({id}) {
                 <div className="text-white text-4xl font-extrabold text-center font-['Russo_One',sans-serif]">
                   {pkg.name}
                 </div>
-                <div className="text-white text-4xl font-extrabold text-center font-['Russo_One',sans-serif] mt-4">
+                <div className="text-white text-6xl font-extrabold text-center font-['Russo_One',sans-serif] mt-4">
                   {pkg.price}
                 </div>
               </div>
               <div>
-                <ul className="text-white text-sm font-semibold text-center mt-4 mb-8 space-y-3">
+                <ul className="text-white text-4x1 font-semibold text-center mt-4 mb-8 space-y-3">
                   {pkg.collection.map((point, index) => (
                     <li key={index}>{point}</li>
                   ))}
