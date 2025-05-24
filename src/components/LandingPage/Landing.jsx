@@ -63,7 +63,7 @@ const Landing = () => {
           <img
             src={isMobile ? hitmanMobile : hitman}
             alt="Hitman"
-            className={`landing-img ${isMobile ? 'absolute right-[-5%] object-cover z-20' : 'absolute inset-0 w-full h-full object-contain z-20'}`}
+            className={`landing-img ${isMobile ? 'absolute right-0 object-cover z-20' : 'absolute inset-0 w-full h-full object-contain z-20'}`}
           />
         </div>
 

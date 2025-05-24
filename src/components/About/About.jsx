@@ -7,7 +7,7 @@ const AboutSection = ({id}) => {
     <div id={id} className="about-container bg-black text-white py-20 px-6 md:px-16">
       <div className="flex flex-col lg:flex-row items-start lg:items-center gap-16">
         {/* Left Side */}
-        <div className="lg:w-1/2 w-full">
+        <div className="lg:w-1/2 w-full order-2 lg:order-1">
           {/* Heading with horizontal line */}
           <div className="flex items-center">
             <h2 className="text-4xl md:text-5xl font-bold uppercase whitespace-nowrap">
@@ -46,7 +46,7 @@ const AboutSection = ({id}) => {
         </div>
 
         {/* Right Side - Video */}
-        <div className="lg:w-1/2 w-full">
+        <div className="lg:w-1/2 w-full order-1 lg:order-2">
           <video
             className="w-full h-auto rounded-xl shadow-lg"
             src={gymVideo}
