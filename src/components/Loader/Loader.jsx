@@ -1,16 +1,29 @@
 import React, { useEffect, useRef, useState } from "react";
 import loaderVideoDesktop from "../../assets/sha_loader.webm";
-import loaderVideoMobile from "../../assets/loader_mobile.webm";
+// import loaderVideoMobile from "../../assets/loader_mobile.webm"; // Mobile loader commented out
 
 export default function Loader({ onLoaded }) {
   const videoRef = useRef(null);
+  const [showLoader, setShowLoader] = useState(true);
   const [videoSrc, setVideoSrc] = useState(loaderVideoDesktop);
   const [objectFitClass, setObjectFitClass] = useState("object-contain");
 
   useEffect(() => {
     const isMobile = window.innerWidth < 768;
-    setVideoSrc(isMobile ? loaderVideoMobile : loaderVideoDesktop);
-    setObjectFitClass(isMobile ? "object-cover" : "object-contain");
+
+    if (isMobile) {
+      // Don't show loader on mobile
+      setShowLoader(false);
+      onLoaded(); // Directly trigger onLoaded on mobile
+    } else {
+      // Show desktop loader
+      setVideoSrc(loaderVideoDesktop);
+      setObjectFitClass("object-contain");
+
+      // const loaderVideoMobile = loaderVideoMobile; // Mobile loader commented
+      // setVideoSrc(loaderVideoMobile);
+      // setObjectFitClass("object-cover");
+    }
 
     const handleVideoEnd = () => {
       onLoaded();
@@ -27,6 +40,8 @@ export default function Loader({ onLoaded }) {
       }
     };
   }, [onLoaded]);
+
+  if (!showLoader) return null;
 
   return (
     <div className="fixed inset-0 z-50 bg-black flex items-center justify-center">
