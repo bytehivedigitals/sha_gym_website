@@ -46,7 +46,7 @@ const Testimonials = () => {
         See How Our Customers Have Achieved Their Goals And Let Their Journeys Inspire Yours!
       </p>
 
-      {/* Mobile-only testimonial section (below 668px) */}
+      {/* Mobile-only testimonial section (below 768px) */}
       <div className="md:hidden mt-8 relative flex items-center justify-center">
         {/* Left Arrow */}
         <button
@@ -79,7 +79,7 @@ const Testimonials = () => {
         </button>
       </div>
 
-      {/* Desktop layout (668px and above) */}
+      {/* Desktop layout (768px and above) */}
       <div className="hidden md:flex flex-col md:flex-row items-center justify-between mb-12 pr-12 mt-5">
         {/* Left Side */}
         <div className="relative w-[60%] flex flex-col items-center justify-center ml-18">
@@ -100,7 +100,7 @@ const Testimonials = () => {
           </div>
 
           {/* Testimonial Box Overlapping */}
-          <div className="relative sm:absolute z-20 sm:-bottom-12 left-1/2 sm:left-2/3 transform -translate-x-2/3 translate-y-4 w-[50%] h-[40%] p-4 sm:py-[5%] sm:px-[5%] mt-3 sm:mt-0 bg-[#D9D9D959] backdrop-blur-3xl rounded-4xl text-white text-left shadow-xl">
+          <div className="relative sm:absolute z-20 sm:-bottom-12 left-1/2 sm:left-2/3 transform -translate-x-2/3 translate-y-4 w-[70%] lg:w-[50%] min-h-[fit-content] h-[40%] p-4 sm:py-[5%] sm:px-[5%] mt-3 sm:mt-0 bg-[#D9D9D959] backdrop-blur-3xl rounded-4xl text-white text-left shadow-xl">
             <p className="italic text-xs xs:text-sm md:text-base leading-relaxed mb-2">
               "{testimonials[index].text}"
             </p>
