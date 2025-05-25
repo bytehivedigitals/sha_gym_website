@@ -2,9 +2,9 @@ import React, { useState, useRef } from "react";
 import emailjs from "@emailjs/browser";
 import formbg from "../../assets/form-bg.webp";
 
-const SERVICE_ID = "your_service_id";
-const TEMPLATE_ID = "your_template_id";
-const USER_ID = "your_public_key";
+const SERVICE_ID = "service_m73nvyq";
+const TEMPLATE_ID = "template_k2982un";
+const USER_ID = "TxUV9W3atW6y6Hd3t";
 
 const ContactForm = ({ id }) => {
   const [name, setName] = useState("");
