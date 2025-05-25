@@ -142,10 +142,10 @@ const PricingCards = ({ id }) => {
       <div className="relative z-20 w-full flex flex-col items-center">
         <div className="w-[90%] text-center mb-10">
           <h2 className="text-4xl sm:text-5xl md:text-[4rem] font-extrabold uppercase text-white mb-2 leading-tight">
-            INSPIRED TO<br />INSPIRE YOUR BEST SELF
+            CHOOSE YOUR JOURNEY<br />TRANSFORM YOUR LIFE
           </h2>
-          <div className="text-base sm:text-lg md:text-[1rem] font-semibold text-white/90 tracking-wide">
-            INSPIRED TO INSPIRE YOUR BEST SELF INSPIRED TO INSPIRE YOUR BEST SELFINSPIRED TO INSPIRE YOUR BEST SELF
+          <div className="text-base uppercase sm:text-lg md:text-[1rem] font-semibold text-white/90 tracking-wide">
+            Flexible plans. Full access. Real results — find the membership that moves with you.
           </div>
         </div>
         

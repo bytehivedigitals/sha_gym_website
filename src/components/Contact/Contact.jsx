@@ -1,6 +1,7 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import emailjs from "@emailjs/browser";
 import formbg from "../../assets/form-bg.webp";
+import formBgMob from "../../assets/mob-form-bg.webp";
 
 const SERVICE_ID = "your_service_id";
 const TEMPLATE_ID = "your_template_id";
@@ -12,6 +13,17 @@ const ContactForm = ({ id }) => {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    handleResize(); // Set initial value
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const formRef = useRef(null);
 
@@ -46,20 +58,20 @@ const ContactForm = ({ id }) => {
   return (
     <div
       id={id}
-      className="form-container relative min-h-[55rem] w-full bg-cover bg-center flex px-4 pt-20 md:pt-24"
+      className={`form-container relative min-h-[45rem] sm:min-h-[50rem] md:min-h-[55rem] w-full bg-cover bg-center flex px-4 ${isMobile ? 'justify-center' : ''} items-center transition-all duration-500 ease-out`}
       style={{
-        backgroundImage: `url(${formbg})`,
+        backgroundImage: isMobile ? `url(${formBgMob})`: `url(${formbg})`,
         backgroundRepeat: "no-repeat",
         opacity: 0.9
       }}
     >
-      <div className="relative z-10 w-full md:w-[50%] px-4 md:px-18">
-        <div className="text-left space-y-6 md:space-y-18">
-          <h1 className="text-4xl md:text-6xl font-extrabold text-black leading-[1.3]">
+      <div className="relative z-10 w-full md:w-[60%] px-4 md:px-18 pt-[35%] sm:pt-[20%] md:pt-0">
+        <div className="text-left space-y-8 sm:space-y-12 md:space-y-18">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-black leading-[1.3]">
             Connect <br /> Engage <br /> Transform
           </h1>
 
-          <form ref={formRef} className="space-y-4 md:space-y-8" onSubmit={handleSubmit}>
+          <form ref={formRef} className="space-y-6 sm:space-y-10 md:space-y-8" onSubmit={handleSubmit}>
             <input
               type="text"
               name="user_name"

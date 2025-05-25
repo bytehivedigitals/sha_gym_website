@@ -1,29 +1,17 @@
 import React, { useEffect, useRef, useState } from "react";
 import loaderVideoDesktop from "../../assets/sha_loader.webm";
-// import loaderVideoMobile from "../../assets/loader_mobile.webm"; // Mobile loader commented out
+import loaderVideoMobile from "../../assets/loader_mobile.webm";
+import loaderVideoMobileMp4 from "../../assets/loader_mobile.mp4";
 
 export default function Loader({ onLoaded }) {
   const videoRef = useRef(null);
-  const [showLoader, setShowLoader] = useState(true);
   const [videoSrc, setVideoSrc] = useState(loaderVideoDesktop);
   const [objectFitClass, setObjectFitClass] = useState("object-contain");
 
   useEffect(() => {
     const isMobile = window.innerWidth < 768;
-
-    if (isMobile) {
-      // Don't show loader on mobile
-      setShowLoader(false);
-      onLoaded(); // Directly trigger onLoaded on mobile
-    } else {
-      // Show desktop loader
-      setVideoSrc(loaderVideoDesktop);
-      setObjectFitClass("object-contain");
-
-      // const loaderVideoMobile = loaderVideoMobile; // Mobile loader commented
-      // setVideoSrc(loaderVideoMobile);
-      // setObjectFitClass("object-cover");
-    }
+    setVideoSrc(isMobile ? loaderVideoMobile : loaderVideoDesktop);
+    setObjectFitClass(isMobile ? "object-cover" : "object-contain");
 
     const handleVideoEnd = () => {
       onLoaded();
@@ -41,8 +29,6 @@ export default function Loader({ onLoaded }) {
     };
   }, [onLoaded]);
 
-  if (!showLoader) return null;
-
   return (
     <div className="fixed inset-0 z-50 bg-black flex items-center justify-center">
       <video
@@ -52,7 +38,14 @@ export default function Loader({ onLoaded }) {
         muted
         playsInline
       >
-        <source src={videoSrc} type="video/mp4" />
+        {window.innerWidth < 768 ? (
+          <>
+            <source src={videoSrc} type="video/webm" />
+            <source src={loaderVideoMobileMp4} type="video/mp4" />
+          </>
+        ) : (
+          <source src={videoSrc} type="video/webm" />
+        )}
         Your browser does not support the video tag.
       </video>
     </div>
