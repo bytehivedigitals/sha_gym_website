@@ -20,7 +20,7 @@ const ContactForm = ({ id }) => {
       setIsMobile(window.innerWidth < 768);
     };
 
-    handleResize(); // Set initial value
+    handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
@@ -38,8 +38,15 @@ const ContactForm = ({ id }) => {
     setLoading(true);
     setSuccess(null);
 
+    // Create an object with the form data
+    const templateParams = {
+      user_name: name,
+      user_email: email,
+      user_phone: phone
+    };
+
     emailjs
-      .sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, USER_ID)
+      .send(SERVICE_ID, TEMPLATE_ID, templateParams, USER_ID)
       .then(
         (result) => {
           setSuccess("Message sent successfully!");
@@ -51,6 +58,7 @@ const ContactForm = ({ id }) => {
         (error) => {
           setSuccess("Failed to send. Please try again.");
           setLoading(false);
+          console.error("EmailJS error:", error.text);
         }
       );
   };
@@ -79,6 +87,7 @@ const ContactForm = ({ id }) => {
               value={name}
               onChange={(e) => setName(e.target.value)}
               className="form-field w-full px-4 py-3 rounded-lg border-2 border-black placeholder-gray-600 text-black focus:outline-none hover:shadow-md hover:bg-gray-200 transition-all duration-300 text-sm md:text-base"
+              required
             />
             <input
               type="email"
@@ -87,14 +96,16 @@ const ContactForm = ({ id }) => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="form-field w-full px-4 py-3 rounded-lg border-2 border-black placeholder-gray-600 text-black focus:outline-none hover:shadow-md hover:bg-gray-200 transition-all duration-300 text-sm md:text-base"
+              required
             />
             <input
-              type="text"
+              type="tel"
               name="user_phone"
               placeholder="YOUR NUMBER"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
               className="form-field w-full px-4 py-3 rounded-lg border-2 border-black placeholder-gray-600 text-black focus:outline-none hover:shadow-md hover:bg-gray-200 transition-all duration-300 text-sm md:text-base"
+              required
             />
             <button
               type="submit"
@@ -104,7 +115,9 @@ const ContactForm = ({ id }) => {
               {loading ? "Sending..." : "JOIN NOW"}
             </button>
             {success && (
-              <div className="text-green-600 font-bold pt-2 text-sm md:text-base">{success}</div>
+              <div className={`font-bold pt-2 text-sm md:text-base ${success.includes("success") ? "text-green-600" : "text-red-600"}`}>
+                {success}
+              </div>
             )}
           </form>
         </div>

@@ -82,7 +82,7 @@ const Trainers = () => {
               className={`relative z-10 rounded-lg w-full h-[28rem] object-contain transition duration-300
                     ${hoveredIndex === index ? "scale-105 grayscale-0" : "grayscale"}`}
             />
-            <h3 className={`text-xl font-bold mt-4 z-10 transition-all duration-300
+            <h3 className={`text-xl font-bold mt-10 z-10 transition-all duration-300
                           ${hoveredIndex === index ? "scale-105 text-red-700" : "text-white"}`}>
               {trainer.name}
             </h3>

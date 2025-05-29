@@ -19,7 +19,6 @@ const pricingData = [
     old: "6500",
     price: "5700",
     desc: [
-      "1 Extra Month Free",
       "4 months of access for the price of 3",
       "Priority access to group classes",
       "Monthly progress assessments",
@@ -31,6 +30,7 @@ const pricingData = [
     old: "11,994",
     price: "10,000",
     desc: [
+      "1 Extra Month Free",
       "Full facility access for 6 months",
       "Complimentary wellness consultation",
       "Goal-specific training guidance",
@@ -41,6 +41,7 @@ const pricingData = [
     old: "22,788",
     price: "14,999",
     desc: [
+      "2 Extra Month Free",
       "Huge savings on annual rates",
       "Priority booking for trainers & classes",
       "Seasonal wellness events access",
@@ -111,13 +112,23 @@ const PricingCards = ({ id }) => {
   };
 
   const handleJoinNow = (plan) => {
-    // Replace with your actual join now logic
-    console.log(`Joining ${plan} plan`);
-    alert(`You selected the ${plan} plan!`);
-    // Here you would typically:
-    // 1. Redirect to a signup page
-    // 2. Open a modal
-    // 3. Add to cart, etc.
+   
+    const whatsappNumber = '917025864355';
+    
+    // Find the selected plan
+    const selectedPlan = pricingData.find(item => item.plan === plan);
+    
+    // Create detailed message
+    const message = `Hello SHA Fitness Team,\n\nI'm interested in the *${plan}* membership plan:\n\n• Plan: ${plan}\n• Original Price: ₹${selectedPlan.old}\n• Discounted Price: ₹${selectedPlan.price}\n\nKey Features:\n${selectedPlan.desc.map(item => `✓ ${item}`).join('\n')}\n\nPlease provide:\n1. Registration details\n2. Payment options\n3. Available slots\n\nThank you!`;
+    
+    // Encode message for URL
+    const encodedMessage = encodeURIComponent(message);
+    
+    // Create WhatsApp URL
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+    
+    // Open in new tab
+    window.open(whatsappUrl, '_blank');
   };
 
   return (

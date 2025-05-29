@@ -47,6 +47,13 @@ const packages = [
 ];
 
 export default function PersonalTrainingPackages({id}) {
+  // WhatsApp message template
+  const whatsappMessage = (pkgName) => {
+    return `Hi, I'm interested in the ${pkgName} Personal Training Package. Could you please provide more details?`;
+  };
+
+  const whatsappNumber = "917994237316";
+  
   return (
     <div id={id} className="personal-trainer-section min-h-screen bg-[black] flex flex-col items-center px-2 py-30">
       <h1 className="text-white text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-extrabold text-center tracking-wide font-['Russo_One',sans-serif]">
@@ -92,11 +99,14 @@ export default function PersonalTrainingPackages({id}) {
                   ))}
                 </ul>
               </div>
-              <button
+              <a
+                href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage(pkg.name))}`}
+                target="_blank"
+                rel="noopener noreferrer"
                 className={`mt-2 px-8 py-2 rounded-md font-bold text-lg font-['Russo_One',sans-serif] ${pkg.button} transition duration-200 shadow hover:scale-105 cursor-pointer`}
               >
                 JOIN NOW
-              </button>
+              </a>
             </div>
           </div>
         ))}
@@ -143,11 +153,14 @@ export default function PersonalTrainingPackages({id}) {
                   ))}
                 </ul>
               </div>
-              <button
+              <a
+                href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage(pkg.name))}`}
+                target="_blank"
+                rel="noopener noreferrer"
                 className={`mt-2 px-8 py-2 rounded-md font-bold text-lg font-['Russo_One',sans-serif] ${pkg.button} transition duration-200 shadow hover:scale-105 cursor-pointer`}
               >
                 JOIN NOW
-              </button>
+              </a>
             </div>
           </div>
         ))}
