@@ -13,7 +13,7 @@ const WhatsAppButton = () => {
   }, []);
 
   // You can make this dynamic (state/prop) if needed
-  const notificationCount = 1;
+  // const notificationCount = 1;
 
   return (
     <>
