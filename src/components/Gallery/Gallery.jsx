@@ -85,7 +85,9 @@ const Gallery = () => {
 
   return (
     <div className='gallery-container'>
-      <h2 className="text-end text-4xl lg:text-8xl font-bold mb-8 lg:mb-16 animate-fadeIn mr-4 lg:mr-12">GALLERY</h2>
+      <h2 className="text-end text-4xl lg:text-8xl font-bold mb-8 lg:mb-16 animate-fadeIn mr-4 lg:mr-12"
+      style={{ fontFamily: "'Russo One', sans-serif" }}
+      >GALLERY</h2>
 
       {/* Desktop View */}
       <div ref={verticalRef} className="hidden md:block relative h-[360vh]">

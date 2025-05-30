@@ -104,7 +104,8 @@ const Landing = () => {
           style={{
             display: "inline-block",
             whiteSpace: "nowrap",
-            animation: "scrollText 50s linear infinite"
+            animation: "scrollText 50s linear infinite",
+            fontFamily: "'Russo One', sans-serif",
           }}
         >
           {Array(20).fill("24/7 GYM ").join("* ")}

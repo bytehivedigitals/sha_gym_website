@@ -17,6 +17,7 @@ const Home = () => {
   return (
     <div 
       id="home"
+      fontFamily="Russo one, sans-serif"
       className="home-container bg-amber-50"
       style={{ width: "100%", backgroundColor: "black" }}
       
@@ -33,6 +34,7 @@ const Home = () => {
       <Features id="features" />
       {/* Services */}
       <PricingCards id="services" />
+      {/* Personal Training Packages */}
       <PersonalTrainingPackages id="personalTrainingPack"/>
       {/* Trainers Section */}
       <Trainers />
@@ -40,9 +42,11 @@ const Home = () => {
       <Testimonials />
       {/* Contact */}
       <Contact id="contact" />
-      {/* Footer Section */}
+      {/* Map Section */}
       <MapSection />
+      {/* Footer */}
       <Footer />
+      {/* WhatsApp Button */}
       <WhatsAppButton />
     </div>
   );
