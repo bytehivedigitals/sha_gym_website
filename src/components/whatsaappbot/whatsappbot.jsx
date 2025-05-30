@@ -18,7 +18,7 @@ const WhatsAppButton = () => {
   return (
     <>
       <a
-        href="https://wa.me/917907467576?text=Hello%2C%20I%20am%20interested%20in%20learning%20more%20about%20Sha%20Health%20Studio%20and%20your%20services.%20Could%20you%20please%20share%20details%20regarding%20your%20programs%2C%20pricing%2C%20and%20availability%3F%20Thank%20you%21"
+        href="https://wa.me/917994237316?text=Hello%2C%20I%20am%20interested%20in%20learning%20more%20about%20Sha%20Health%20Studio%20and%20your%20services.%20Could%20you%20please%20share%20details%20regarding%20your%20programs%2C%20pricing%2C%20and%20availability%3F%20Thank%20you%21"
         target="_blank"
         rel="noopener noreferrer"
         style={{ textDecoration: "none" }}

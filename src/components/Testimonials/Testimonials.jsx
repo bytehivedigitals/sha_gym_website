@@ -40,7 +40,7 @@ const Testimonials = () => {
   return (
     <div className="testimonial-container h-[fit-content] bg-black text-white text-center px-4 py-20 sm:py-20">
       <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold uppercase leading-tight">
-        Your Fitness <br className="hidden md:block" /> Goals, Their Expertise
+        Hear from our  <br className="hidden md:block" />fit family
       </h1>
       <p className="mt-3 sm:mt-4 text-xs sm:text-base text-gray-400 max-w-xs sm:max-w-xl mx-auto uppercase tracking-wide">
         See How Our Customers Have Achieved Their Goals And Let Their Journeys Inspire Yours!

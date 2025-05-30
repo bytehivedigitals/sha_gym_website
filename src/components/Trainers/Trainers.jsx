@@ -24,7 +24,9 @@ const Trainers = () => {
 
   return (
     <div className="trainers-container text-white mt-5 px-4 max-w-7xl mx-auto">
-      <h2 className="text-center text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
+      <h2 className="text-center text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight"
+       style={{ fontFamily: "'Russo One', sans-serif" }}
+      >
         Your Fitness <br /> Goals, Their Expertise
       </h2>
 

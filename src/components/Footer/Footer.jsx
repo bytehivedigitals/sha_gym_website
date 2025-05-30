@@ -5,14 +5,15 @@ import ShaLogo from "../../assets/sha.webp";
 
 export default function Footer() {
   return (
-    <footer className="footer-container bg-black text-white py-6 px-6 md:px-16 mt-5">
+    <footer className="footer-container bg-black text-white py-6 px-6 md:px-16 mt-5"
+    style={{ fontFamily: "'Russo One', sans-serif" }}>
       {/* Desktop Layout */}
       <div className="hidden md:flex justify-between items-start max-w-full">
         {/* Contact Section on far left */}
         <div className="w-1/3 pl-2 py-5 space-y-4 text-left">
           <h2 className="font-semibold text-lg">Contact</h2>
           <p className="flex items-center gap-2 text-sm">
-            <MdPhone className="text-base" /> +91 79074 67576
+            <MdPhone className="text-base" /> +91 79942 37316
           </p>
           <p className="flex items-center gap-2 text-sm">
             <MdEmail className="text-base" /> shahelathstudio@gmail.com
@@ -57,7 +58,7 @@ export default function Footer() {
         <div className="space-y-2">
           <h2 className="font-semibold text-lg">Contact</h2>
           <p className="flex justify-center items-center gap-2 text-sm">
-            <MdPhone className="text-base" /> +91 79074 67576
+            <MdPhone className="text-base" /> +91 79942 37316
           </p>
           <p className="flex justify-center items-center gap-2 text-sm">
             <MdEmail className="text-base" /> shahelathstudio@gmail.com

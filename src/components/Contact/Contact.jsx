@@ -75,7 +75,8 @@ const ContactForm = ({ id }) => {
     >
       <div className="relative z-10 w-full md:w-[60%] px-4 md:px-18 pt-[35%] sm:pt-[20%] md:pt-0">
         <div className="text-left space-y-8 sm:space-y-12 md:space-y-18">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-black leading-[1.3]">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-black leading-[1.3]"
+          style={{ fontFamily: "'Russo One', sans-serif" }}>
             Connect <br /> Engage <br /> Transform
           </h1>
 
@@ -111,6 +112,7 @@ const ContactForm = ({ id }) => {
               type="submit"
               className="mt-2 md:mt-4 px-8 py-3 bg-black text-white text-lg md:text-xl font-semibold rounded-xl hover:bg-[red] transition cursor-pointer w-full md:w-auto"
               disabled={loading}
+              style={{ fontFamily: "'Russo One', sans-serif" }}
             >
               {loading ? "Sending..." : "JOIN NOW"}
             </button>
