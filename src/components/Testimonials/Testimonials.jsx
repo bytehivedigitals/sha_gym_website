@@ -8,19 +8,19 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 const testimonials = [
   {
     id: 1,
-    text: "I Love The Variety Of Workouts On Fit Fusion. Whether It's HIIT, Yoga, Or Strength Training, There's Always Something New To Try. The Progress Tracking Tools Keep Me Motivated!",
+    text: "I Love The Variety Of Workouts On Sha-Health-Studio. Whether It's HIIT, Yoga, Or Strength Training, There's Always Something New To Try. The Progress Tracking Tools Keep Me Motivated!",
     author: "rizwan p s",
     img: client1,
   },
   {
     id: 2,
-    text: "Thanks to Fit Fusion, I've achieved my fitness goals and feel more energetic than ever!",
+    text: "Thanks to sha-Health-Studio, I've achieved my fitness goals and feel more energetic than ever!",
     author: "neha j",
     img: client2,
   },
   {
     id: 3,
-    text: "Fit Fusion has changed my life. The programs are tailored and results-driven.",
+    text: "Sha-Health-Studio has changed my life. The programs are tailored and results-driven.",
     author: "rahul k",
     img: client3,
   },
