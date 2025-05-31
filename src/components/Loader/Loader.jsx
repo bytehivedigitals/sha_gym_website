@@ -39,7 +39,6 @@ export default function Loader({ onLoaded }) {
         playsInline
         controls={false}
         preload="auto"
-        loop  
         webkit-media-controls="none"
       >
         {window.innerWidth < 768 ? (
