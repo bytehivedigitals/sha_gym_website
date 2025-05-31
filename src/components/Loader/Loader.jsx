@@ -45,7 +45,7 @@ export default function Loader({ onLoaded }) {
         {window.innerWidth < 768 ? (
           <>
             <source src={videoSrc} type="video/webm" />
-            <source src={loaderVideoMobileMp4} type="video/mp4" />
+            <source src={loaderVideoMobile} type="video/mp4" />
           </>
         ) : (
           <source src={videoSrc} type="video/webm" />
