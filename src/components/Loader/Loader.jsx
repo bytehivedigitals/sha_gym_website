@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import loaderVideoDesktop from "../../assets/sha_loader.webm";
 import loaderVideoMobile from "../../assets/mobile_loderfnl.mp4";
 import loaderVideoMobileMp4 from "../../assets/mobile_loderfnl.mp4";
+import "./Loader.css";
 
 export default function Loader({ onLoaded }) {
   const videoRef = useRef(null);
