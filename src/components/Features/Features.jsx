@@ -25,7 +25,7 @@ const Features = ({id}) => {
     <section id={id} className="features-container px-4 sm:px-0 mt-16">
       {/* Header Section */}
       <div className="text-center mt-[-2rem]">
-        <h1 className="text-2xl sm:text-3xl md:text-[6rem] font-bold mb-3" data-aos="zoom-in" data-aos-delay="100">
+        <h1 className="text-3xl sm:text-4xl md:text-[6rem] font-bold mb-3" data-aos="zoom-in" data-aos-delay="100">
           Inspired to
         </h1>
         <h1 className="text-3xl sm:text-4xl md:text-[6rem] font-bold mb-6" data-aos="zoom-in" data-aos-delay="200">

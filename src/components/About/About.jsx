@@ -1,6 +1,7 @@
 import React from "react";
 import { FaFacebookF, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
-import gymVideo from "../../assets/sha_loader.webm"; // Ensure the path is correct
+import gymVideo from "../../assets/Sha-about-video.webm";
+import fallbackgymVideo from "../../assets/Sha-about-video.mp4";
 
 const AboutSection = ({id}) => {
   return (
@@ -48,13 +49,16 @@ const AboutSection = ({id}) => {
         {/* Right Side - Video */}
         <div className="lg:w-1/2 w-full order-1 lg:order-2">
           <video
-            className="w-full h-auto rounded-xl shadow-lg"
-            src={gymVideo}
+            className="w-full h-auto rounded shadow-lg"
             autoPlay
             muted
             loop
             playsInline
-          />
+          >
+            <source src={gymVideo} type="video/webm" />
+            <source src={fallbackgymVideo} type="video/mp4" />
+            <p>Your browser does not support the video tag.</p>
+          </video>
         </div>
       </div>
     </div>

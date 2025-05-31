@@ -47,7 +47,8 @@ const Landing = () => {
                 <>
                   SCULPT <span className="text-gray-400">YOUR</span><br />
                   BODY,<br />
-                  ELEVATE <span className="text-gray-400">YOUR</span><br />
+                  ELEVATE <br />
+                  <span className="text-gray-400">YOUR</span><br />
                   SPIRIT
                 </>
               ) : (
@@ -87,6 +88,7 @@ const Landing = () => {
 
         <div className={`start-button ${isMobile ? 'relative pb-8 px-4 flex mt-4' : 'absolute right-0 bottom-14'} z-40`}>
           <button className={`bg-gray-200 ${isMobile ? '' : 'mr-[5rem]'} text-black text-[1.2rem] md:text-[1.5rem] font-bold px-6 md:px-8 py-3 md:py-4 rounded-full shadow-md hover:bg-[grey] transition cursor-pointer`}
+            style={{ fontFamily: "'Russo One', sans-serif" }}
             onClick={() => {
               const section = document.getElementById("personalTrainingPack");
               if (section) {
