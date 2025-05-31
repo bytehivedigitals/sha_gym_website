@@ -32,23 +32,28 @@ export default function Loader({ onLoaded }) {
   return (
     <div className="fixed inset-0 z-50 bg-black flex items-center justify-center">
       <video
-        ref={videoRef}
-        className={`w-full h-full ${objectFitClass}`}
-        autoPlay
-        muted
-        playsInline
-        controls={false}
-      >
-        {window.innerWidth < 768 ? (
-          <>
-            <source src={videoSrc} type="video/webm" />
-            <source src={loaderVideoMobileMp4} type="video/mp4" />
-          </>
-        ) : (
-          <source src={videoSrc} type="video/webm" />
-        )}
-        Your browser does not support the video tag.
-      </video>
+  ref={videoRef}
+  className={`w-full h-full ${objectFitClass}`}
+  autoPlay
+  muted
+  playsInline
+  controls={false}
+  disablePictureInPicture
+  disableRemotePlayback
+  preload="auto"
+  x-webkit-airplay="allow"
+  webkit-playsinline="true"
+>
+  {window.innerWidth < 768 ? (
+    <>
+      <source src={videoSrc} type="video/webm" />
+      <source src={loaderVideoMobileMp4} type="video/mp4" />
+    </>
+  ) : (
+    <source src={videoSrc} type="video/webm" />
+  )}
+  Your browser does not support the video tag.
+</video>
     </div>
   );
 }

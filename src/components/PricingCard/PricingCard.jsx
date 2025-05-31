@@ -154,7 +154,7 @@ const PricingCards = ({ id }) => {
         <div className="w-[90%] text-center mb-10">
           <h2 className="text-4xl sm:text-5xl md:text-[4rem] font-extrabold uppercase text-white mb-2 leading-tight"
            style={{ fontFamily: "'Russo One', sans-serif" }}>
-            CHOOSE YOUR JOURNEY TRANSFORM<br /> YOUR LIFE
+            CHOOSE YOUR JOURNEY<br />TRANSFORM YOUR LIFE
           </h2>
           <div className="text-base uppercase sm:text-lg md:text-[1rem] font-semibold text-white/90 tracking-wide">
             Flexible plans. Full access. Real results — find the membership that moves with you.
