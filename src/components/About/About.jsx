@@ -1,7 +1,7 @@
 import React from "react";
 import { FaFacebookF, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
-import gymVideo from "../../assets/sha-about-video.webm";
-import fallbackgymVideo from "../../assets/sha-about-video.mp4";
+import gymVideo from "../../assets/Sha-about-video.webm";
+import fallbackgymVideo from "../../assets/Sha-about-video.mp4";
 
 const AboutSection = ({id}) => {
   return (
