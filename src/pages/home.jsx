@@ -10,16 +10,14 @@ import Gallery from "../components/Gallery/Gallery";
 import WhatsAppButton from "../components/whatsaappbot/whatsappbot";
 import PricingCards from "../components/PricingCard/PricingCard";
 import PersonalTrainingPackages from "../components/PersonalTraining/personalTraining";
-import Strip from "../components/LandingStrip/strip";
 import MapSection from "../components/MapSection/MapSection";
 
 const Home = () => {
   return (
     <div 
       id="home"
-      fontFamily="Russo one, sans-serif"
       className="home-container bg-amber-50"
-      style={{ width: "100%", backgroundColor: "black" }}
+      style={{ width: "100%", backgroundColor: "black", fontFamily: "Russo One, sans-serif" }}
       
     >
       <Navbar />

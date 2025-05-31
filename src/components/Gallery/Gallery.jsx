@@ -164,7 +164,7 @@ const Gallery = () => {
                       {item.text.map((point, idx) => (
                         <motion.li
                           key={idx}
-                          className="flex items-start gap-2 text-white text-sm"
+                          className="flex items-start gap-3 text-white text-sm"
                           initial={{ opacity: 0, y: 20 }}
                           whileInView={{ opacity: 1, y: 0 }}
                           transition={{ duration: 0.3, delay: idx * 0.1, ease: 'easeOut' }}
@@ -172,7 +172,7 @@ const Gallery = () => {
                           <span className="w-6 flex justify-center text-lg text-red-600">
                             {iconSet[idx % iconSet.length]}
                           </span>
-                          <span>{point.trim()}</span>
+                          <span className='text-start'>{point.trim()}</span>
                         </motion.li>
 
                       ))}

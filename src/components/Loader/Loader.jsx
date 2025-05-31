@@ -37,6 +37,7 @@ export default function Loader({ onLoaded }) {
         autoPlay
         muted
         playsInline
+        controls={false}
       >
         {window.innerWidth < 768 ? (
           <>
