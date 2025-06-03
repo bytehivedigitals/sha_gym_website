@@ -7,7 +7,7 @@ import bgImage from "../../assets/Shape 1.png";
 const trainers = [
   { id: 1, name: "Ami", img: trainer1 },
   { id: 2, name: "SHA", img: trainer2 },
-  { id: 3, name: "Aash", img: trainer3 },
+  { id: 3, name: "Ris", img: trainer3 },
 ];
 
 const Trainers = () => {
