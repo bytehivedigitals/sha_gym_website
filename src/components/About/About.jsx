@@ -20,7 +20,7 @@ const AboutSection = ({id}) => {
           {/* Paragraph */}
           <h2 className="text-2xl mt-10 font-bold text-gray-500">Your 24/7 Fitness Destination in Kozhikode, Kerala</h2>
           <p className="text-xl text-gray-300 mt-10 leading-relaxed">
-            At SHA Health Studio, we believe fitness should revolve around your schedule. As Kozhikode’s premier 24/7 gym, we offer an ultra-modern fitness environment that’s open round the clock—because your health never sleeps.
+            At SHA Health Studio, we believe fitness should revolve around your schedule. As Kozhikode’s Leading 24/7 gym, we offer an ultra-modern fitness environment that’s open round the clock—because your health never sleeps.
           </p>
           <p className="text-xl text-gray-300 mt-10 leading-relaxed">
             Whether you’re an early bird, a night owl, or someone with a packed calendar, SHA ensures that top-tier equipment, expert trainers, and a supportive community are always within reach. Step into a space built for transformation, motivation, and results.
@@ -32,7 +32,7 @@ const AboutSection = ({id}) => {
               <a href="#" className="hover:text-gray-400 transition">
                 <FaFacebookF />
               </a>
-              <a href="#" className="hover:text-gray-400 transition">
+              <a href="https://www.instagram.com/shahealthstudio?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" className="hover:text-gray-400 transition">
                 <FaInstagram />
               </a>
               <a href="#" className="hover:text-gray-400 transition">

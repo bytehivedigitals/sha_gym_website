@@ -3,9 +3,9 @@ import emailjs from "@emailjs/browser";
 import formbg from "../../assets/form-bg.webp";
 import formBgMob from "../../assets/mob-form-bg.webp";
 
-const SERVICE_ID = "service_m73nvyq";
-const TEMPLATE_ID = "template_k2982un";
-const USER_ID = "TxUV9W3atW6y6Hd3t";
+const SERVICE_ID = "service_e272on8";
+const TEMPLATE_ID = "template_3mghgci";
+const USER_ID = "sNFk5DxgLjwe0Ydla";
 
 const ContactForm = ({ id }) => {
   const [name, setName] = useState("");
