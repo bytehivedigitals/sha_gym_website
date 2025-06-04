@@ -1,22 +1,9 @@
 import React from "react";
 import pre1 from "../../assets/Gym-5.webp";
-import pre2 from "../../assets/pre1.webp";  
+import pre2 from "../../assets/pre1.webp";
 import pre3 from "../../assets/pre2.webp";
 
 const packages = [
-  {
-    name: "SILVER",
-    price: "₹8,499",
-    bg: "bg-gray-500/80",
-    overlay: "bg-gray-800/40",
-    button: "bg-white text-gray-800",
-    img: pre3,
-    collection: [
-      "Weekly personal training sessions",
-      "Moderate guidance on form and nutrition",
-      "Ideal for those who need some push & planning",
-    ],
-  },
   {
     name: "GOLD",
     price: "₹9,999",
@@ -28,7 +15,22 @@ const packages = [
       "Premium tier with full customization",
       "Daily supervision and workouts",
       "Nutritional guidance + lifestyle mentoring",
-      "Best suited for transformation plans or competitive goals",
+      "26 sessions per month",
+      "Weekly one day off",
+    ],
+  },
+  {
+    name: "SILVER",
+    price: "₹8,499",
+    bg: "bg-gray-500/80",
+    overlay: "bg-gray-800/40",
+    button: "bg-white text-gray-800",
+    img: pre3,
+    collection: [
+      "Moderate guidance on form and nutrition",
+      "Ideal for those who need some push & planning",
+      "26 sessions per month",
+      "Weekly one day off",
     ],
   },
   {
@@ -40,27 +42,32 @@ const packages = [
     img: pre2,
     collection: [
       "Starter-friendly package",
-      "One-on-one sessions twice a week",
       "Technique correction, confidence-building support",
+      "26 sessions per month",
+      "Weekly one day off",
     ],
   },
 ];
 
-export default function PersonalTrainingPackages({id}) {
+export default function PersonalTrainingPackages({ id }) {
   // WhatsApp message template
   const whatsappMessage = (pkgName) => {
     return `Hi, I'm interested in the ${pkgName} Personal Training Package. Could you please provide more details?`;
   };
 
   const whatsappNumber = "917994237316";
-  
+
   return (
-    <div id={id} className="personal-trainer-section min-h-screen bg-[black] flex flex-col items-center px-2 py-30">
+    <div
+      id={id}
+      className="personal-trainer-section min-h-screen bg-[black] flex flex-col items-center px-2 py-30"
+    >
       <h1 className="text-white text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-extrabold text-center tracking-wide font-['Russo_One',sans-serif]">
         Personal Training <br className="hidden xs:block" /> Packages
       </h1>
       <p className="text-gray-400 font-semibold mt-6 text-center tracking-wide text-base xs:text-lg md:text-xl max-w-xl">
-        We're Your Partner In Achieving A Healthier, Stronger, And More Confident You.
+        We're Your Partner In Achieving A Healthier, Stronger, And More
+        Confident You.
       </p>
 
       {/* Mobile View (column layout) */}
@@ -100,7 +107,9 @@ export default function PersonalTrainingPackages({id}) {
                 </ul>
               </div>
               <a
-                href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage(pkg.name))}`}
+                href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+                  whatsappMessage(pkg.name)
+                )}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`mt-2 px-8 py-2 rounded-md font-bold text-lg font-['Russo_One',sans-serif] ${pkg.button} transition duration-200 shadow hover:scale-105 cursor-pointer`}
@@ -123,8 +132,8 @@ export default function PersonalTrainingPackages({id}) {
               transition-all duration-300
               ${
                 i === 1
-                  ? "w-[370px] lg:w-[400px] h-[530px] lg:h-[580px] scale-105 z-10"
-                  : "w-[320px] lg:w-[350px] h-[470px] lg:h-[500px] mt-4"
+                  ? "w-[400px] lg:w-[440px] h-[550px] lg:h-[600px] scale-105 z-10"
+                  : "w-[380px] lg:w-[400px] h-[520px] lg:h-[540px] mt-4"
               }
             `}
           >
@@ -154,7 +163,9 @@ export default function PersonalTrainingPackages({id}) {
                 </ul>
               </div>
               <a
-                href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage(pkg.name))}`}
+                href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+                  whatsappMessage(pkg.name)
+                )}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`mt-2 px-8 py-2 rounded-md font-bold text-lg font-['Russo_One',sans-serif] ${pkg.button} transition duration-200 shadow hover:scale-105 cursor-pointer`}
